@@ -7,8 +7,9 @@ before_action :find_event, only: [:show, :update, :destroy]
 
   def show
   end
-  #@event already called
+  #calculcate rundown_time
 
+  
   def destroy
     @event.destroy
     #redirect to
