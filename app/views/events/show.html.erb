@@ -1,8 +1,10 @@
 <h1>Events#show</h1>
 <p>Find me in app/views/events/show.html.erb</p>
+
 <%= @event.title %>
 <%= @event.description %>
 <% seconds = ( Time.parse(@event.end_time) - Time.now) %>
 <%= Time.at(seconds).utc.strftime("%H:%M:%S") %>
 
 <%= "this is where should see comments" %> 
+

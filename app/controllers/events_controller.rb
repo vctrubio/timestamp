@@ -3,14 +3,14 @@ before_action :find_event, only: [:show, :update, :destroy]
 
   def index
     @events = Event.all
+
     # must be able to make new comments in the show
     @comment = Comment.new
+    @event = Event.new
   end
 
   def show
   end
- 
-
   
   def destroy
     @event.destroy
@@ -22,11 +22,22 @@ before_action :find_event, only: [:show, :update, :destroy]
   end
   
   def create
-    @event_create = Event.new(event_params)
-    @event_create.user = current_user
-    @start_time_default = Time.now
-    @end_time_default = @start_time_default + 86400
-    #if end_time param nil? provide defualt end time 24hrs
+    @event = Event.new(event_params)
+    @event.user = current_user
+    
+    @start_time = Time.now
+    @event.start_time = @start_time
+
+    # Get the end time from user or assign default
+    if  params["event"]["end_time"].empty?
+      @end_time_variable = @start_time + 86400
+    else
+      @end_time_variable = @start_time + (params["event"]["end_time"].to_i * 3600)
+    end
+
+     @event.end_time = @end_time_variable
+     
+     
       if @event.save
         redirect_to root_path
       else
