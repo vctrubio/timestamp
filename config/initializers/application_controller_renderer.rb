@@ -6,3 +6,8 @@
 #     https: false
 #   )
 # end
+
+
+Geocoder.configure(
+    units: :km, 
+  )
