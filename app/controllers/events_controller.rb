@@ -3,11 +3,13 @@ before_action :find_event, only: [:show, :update, :destroy]
 
   def index
     @events = Event.all
+    # must be able to make new comments in the show
+    @comment = Comment.new
   end
 
   def show
   end
-  #calculcate rundown_time
+ 
 
   
   def destroy
@@ -22,15 +24,11 @@ before_action :find_event, only: [:show, :update, :destroy]
   def create
     @event_create = Event.new(event_params)
     @event_create.user = current_user
-
-
-    @current_time = Time.now
-    @start_time_default = @current_time
-    @end_time_default = @current_time + 86400
+    @start_time_default = Time.now
+    @end_time_default = @start_time_default + 86400
     #if end_time param nil? provide defualt end time 24hrs
-
       if @event.save
-        redirect_to root
+        redirect_to root_path
       else
         render :new
       end
@@ -46,6 +44,7 @@ before_action :find_event, only: [:show, :update, :destroy]
   def event_params
     params.require(:event).permit(:title, :description, :end_time, :start_time, :picture)
   end
+
   #user_id not passed
 
 

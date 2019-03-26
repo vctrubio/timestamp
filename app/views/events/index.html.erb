@@ -1,6 +1,15 @@
+<%# user must be able to click on each map marker to pop up a event %>
+ <%# calculcate rundown_time with javascript https://www.geeksforgeeks.org/create-countdown-timer-using-javascript/, the end time will be event.end_time %>
 <% @events.each do |e| %>
-<br>
-<%= e.title  %>
-<br>
-<%= e.description %>
+  <br>
+  <%= e.title  %>
+  <br>
+  <%= e.description %>
+  <%# each event must have a list of all their comments %>
+  <%# remember, @events is a array of all the events, and .comments will return an array of all the comments %>
+   if there are no comments, it will display a zero
+  <%= e.comments.each do |comment| %>
+  <%= comment.content %>
+  <% end %>
 <% end %>
+
