@@ -1,8 +1,20 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :users do
-    resources :events
-  end
   root to: 'events#index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  devise_for :users
+    resources :users do
+      member do
+        get :following, :followers
+        post :follow, to: 'users#follow'
+        delete :unfollow, to: 'users#unfollow'
+      end
+    resources :events
+    #do not need comments for users
+  end
+
+  resources :events do
+    resources :comments
+  end
+
+  root to: 'events#index'
 end

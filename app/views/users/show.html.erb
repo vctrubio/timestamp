@@ -1,0 +1,9 @@
+<h1><%= @user.username %> -  <%= @user.email %></h1>
+<% if current_user.id != @user.id %>
+<% if current_user.following?(@user) %>
+  <%= link_to "unfollow", unfollow_user_path(@user), method: 'delete'%>
+  <% else %>
+  <%= link_to "follow", follow_user_path(@user), method: 'post'%>
+<% end %>
+<% end %>
+

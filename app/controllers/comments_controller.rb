@@ -1,5 +1,11 @@
 class CommentsController < ApplicationController
-  before_action :set_event, only: [:create, :new]
+  before_action :set_event, only: [:index, :create, :new]
+
+  def index
+    @comment = Comment.new
+    @comments = @event.comments
+    #@user = current_user - will use for profile pic in later update
+  end
 
   def new
     @comment = Comment.new
@@ -10,9 +16,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.event = @event
     if @comment.save!
-      redirect_to user_event_path(@comment)
-    else
-      redirect_to user_event_path(@comment)
+      redirect_to event_comments_path
     end
   end
 
@@ -20,7 +24,7 @@ class CommentsController < ApplicationController
   private
 
   def set_event
-    @event = Event.find(params[:id])
+    @event = Event.find(params[:event_id])
   end
 
   def comment_params
