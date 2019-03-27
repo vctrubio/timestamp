@@ -1,9 +1,25 @@
-<h1><%= @user.username %> -  <%= @user.email %></h1>
-<% if current_user.id != @user.id %>
-<% if current_user.following?(@user) %>
-  <%= link_to "unfollow", unfollow_user_path(@user), method: 'delete'%>
+<h1><%= @user.username %></h1>
+<p>Following :<%= @user.following.count %></p>
+<p>Followers: <%= @user.followers.count %></p>
+
+<div>
+  <% if current_user.id != @user.id %>
+  <%# buttton to show follow %>
+  <% if current_user.following?(@user) %>
+    <%= link_to "unfollow", unfollow_user_path(@user), method: 'delete'%>
+    <% else %>
+    <%= link_to "follow", follow_user_path(@user), method: 'post'%>
+  <% end %>
   <% else %>
-  <%= link_to "follow", follow_user_path(@user), method: 'post'%>
+  <%= link_to "Edit", edit_user_registration_path(current_user) %>
 <% end %>
+</div>
+
+<% @user.events.each do |event| %>
+<ul>
+<li><%= event.title %> <%= event.created_at %></li>
+</ul>
 <% end %>
+
+
 
