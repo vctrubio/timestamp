@@ -1,18 +1,38 @@
 <%# user must be able to click on each map marker to pop up a event %>
- <%# calculcate rundown_time with javascript https://www.geeksforgeeks.org/create-countdown-timer-using-javascript/, the end time will be event.end_time %>
+
 <% @events.each do |e| %>
   <%# if the event is expired, it willl not show in the map %>
+    <% if e.end_time > Time.now %>
     <%= e.description %>
     <%= e.title %>
-    <%# each event must have a list of all their comments %>
-    
-    <%# e.comments.each do |comment|  %>
+    <br>
+    <% seconds = ( Time.parse(e.end_time) - Time.now) %>
+<%= Time.at(seconds).utc.strftime("%H:%M:%S") %>
+      <%= link_to "delete", user_event_path(e.user_id, e.id), method: :delete %>
+    <%# calculcate rundown_time with javascript https://www.geeksforgeeks.org/create-countdown-timer-using-javascript/, the end time will be event.end_time %>
+    <br>
+
+
+
+    <%= link_to "end event", terminate_event_path(e.id), method: "patch" %>
+    <!-- this will set the end time of the event to the current time, thus "ending it" -->
+
+     <%# e.comments.each do |comment|  %>
     <%# comment.content %>
       <%# <% end %>
-    
-    <%# remember, @events is a array of all the events, and .comments will return an array of all the comments %>
+    <%# each event must have a list of all their comments %>
+
+    <%= e.comments.count %> comments
     <%# we must show the count of comments %>
-    <%= e.comments.count %>     <p>:comments</p>
+    <% end %>
+
+
+
+
+
+    <%# remember, @events is a array of all the events, and .comments will return an array of all the comments %>
+
+
 
     <br>
     <% end %>
@@ -32,3 +52,4 @@
 <%= f.submit %>
 
 <% end %>
+

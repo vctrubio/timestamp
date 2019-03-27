@@ -6,8 +6,12 @@ Rails.application.routes.draw do
   end
 
   resources :events do
+    member do
+      patch :terminate
+    end
     resources :comments
   end
+
 
   root to: 'events#index'
 end
