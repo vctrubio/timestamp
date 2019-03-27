@@ -9,5 +9,12 @@ Rails.application.routes.draw do
         delete :unfollow, to: 'users#unfollow'
       end
     resources :events
+    resources :comments
   end
+
+  resources :events do
+    resources :comments
+  end
+
+  root to: 'events#index'
 end
