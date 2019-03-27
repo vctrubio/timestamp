@@ -37,6 +37,9 @@
       <ul>
         <li><%= event.title %> <%= event.created_at %></li>
         <%= link_to "delete", user_event_path(event.user_id, event.id), method: :delete %>
+        <li>
+        <%= link_to "Comments Section", event_comments_path(event)%>
+        </li>
     </ul>
   <% end %>
 <% end %>
