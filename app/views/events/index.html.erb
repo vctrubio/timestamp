@@ -4,10 +4,12 @@
   <%# if the event is expired, it willl not show in the map %>
     <% if e.end_time > Time.now %>
     <%= e.description %>
-    event tittile: <%= e.title %>
+    <%= e.title %>
+    <br>
+    <%= cl_image_tag e.picture, height: 300%>
     <br>
     <% seconds = ( Time.parse(e.end_time) - Time.now) %>
-<%= Time.at(seconds).utc.strftime("%H:%M:%S") %>
+  time before expires: <%= Time.at(seconds).utc.strftime("%H:%M:%S") %>
 
     <%# calculcate rundown_time with javascript https://www.geeksforgeeks.org/create-countdown-timer-using-javascript/, the end time will be event.end_time %>
     <br>
@@ -47,6 +49,8 @@
 <%= f.text_field :title  %>
 <%= f.label :description %>
 <%= f.text_field :description %>
+  <%= f.input :picture %>
+  <%= f.input :picture_cache, as: :hidden %>
 <%= f.input :end_time, collection: 1..24 %>
 
 <%= f.submit %>
