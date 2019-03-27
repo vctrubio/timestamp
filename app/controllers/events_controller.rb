@@ -3,12 +3,12 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
 
   def terminate
   @event.update(end_time: Time.now)
-  redirect_to root_path
-
+  redirect_to current_user
+    # since youre editing in the user show, this just refreshes the page
   end
 
   def index
-    @events = Event.all
+    @events = Event.order(end_time: :asc)
 
     # must be able to make new comments in the show
     @comment = Comment.new
@@ -20,7 +20,8 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
 
   def destroy
     @event.destroy
-    redirect_to root_path
+    redirect_to current_user
+      # since youre editing in the user show, this just refreshes the page
   end
 
   def new
