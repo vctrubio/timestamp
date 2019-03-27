@@ -1,11 +1,15 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+
+  has_many :events
+  has_many :comments, dependent: :destroy #, through: :events
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   has_many :events
-  has_many :comments, through: :events
+  has_many :comments
 
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",

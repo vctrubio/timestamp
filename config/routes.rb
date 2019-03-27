@@ -9,7 +9,7 @@ Rails.application.routes.draw do
         delete :unfollow, to: 'users#unfollow'
       end
     resources :events
-    resources :comments
+    #do not need comments for users
   end
 
   resources :events do
