@@ -16,6 +16,9 @@ class Event < ApplicationRecord
       tsearch: { prefix: true }
     }
 
+    mount_uploader :picture, PhotoUploader
+
+
 end
 
 # create_table "events", force: :cascade do |t|
