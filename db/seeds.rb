@@ -24,4 +24,5 @@ event = Event.new(
     user_id: (1..10).to_a.sample
 )
 event.save
+
 end
