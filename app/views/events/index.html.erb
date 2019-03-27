@@ -1,4 +1,10 @@
 <%# user must be able to click on each map marker to pop up a event %>
+<%= form_tag events_path, method: :get do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "form-control search",
+        placeholder: "Search by event or username" %>
+      <% end %>
 
 <% @events.each do |e| %>
   <%# if the event is expired, it willl not show in the map %>
@@ -16,7 +22,7 @@
 
 
 
-    
+
     <!-- this will set the end time of the event to the current time, thus "ending it" -->
 
      <%# e.comments.each do |comment|  %>

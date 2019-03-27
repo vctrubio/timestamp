@@ -6,8 +6,18 @@ class Event < ApplicationRecord
     # validates :username, presence: true
     validates :title, presence: true
 
+  include PgSearch
+  pg_search_scope :global_search,
+    against: [ :title, :description ],
+    associated_against: {
+      user: [ :username ]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
 
     mount_uploader :picture, PhotoUploader
+
 
 end
 

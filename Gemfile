@@ -16,7 +16,9 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'geocoder'
+gem 'pg_search'
 gem 'carrierwave', '~> 1.2'
+
 
 
 
