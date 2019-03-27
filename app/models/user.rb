@@ -33,6 +33,7 @@ class User < ApplicationRecord
   # user.following << other_user
   # user.following.delete(other_user)
 
+
   # Follows a user.
   def follow(other_user)
     following << other_user

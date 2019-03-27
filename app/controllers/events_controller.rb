@@ -8,7 +8,12 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
   end
 
   def index
-    @events = Event.order(end_time: :asc)
+    if params[:query].present?
+      @events = Event.global_search(params[:query]).order(end_time: :asc)
+    else
+      @events = Event.order(end_time: :asc)
+    end
+
 
     # must be able to make new comments in the show
     @comment = Comment.new

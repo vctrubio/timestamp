@@ -16,7 +16,8 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem 'geocoder'
-
+# Adding PG Search Gem
+gem 'pg_search'
 
 gem 'cloudinary', '~> 1.9.1'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
