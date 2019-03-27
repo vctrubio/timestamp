@@ -1,5 +1,11 @@
 class EventsController < ApplicationController
-before_action :find_event, only: [:show, :update, :destroy]
+before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
+
+  def terminate
+  @event.update(end_time: Time.now)
+  redirect_to root_path
+
+  end
 
   def index
     @events = Event.all
@@ -11,20 +17,20 @@ before_action :find_event, only: [:show, :update, :destroy]
 
   def show
   end
-  
+
   def destroy
     @event.destroy
-    #redirect to
+    redirect_to root_path
   end
-  
+
   def new
     @event = Event.new
   end
-  
+
   def create
     @event = Event.new(event_params)
     @event.user = current_user
-    
+
     @start_time = Time.now
     @event.start_time = @start_time
 
@@ -36,14 +42,18 @@ before_action :find_event, only: [:show, :update, :destroy]
     end
 
      @event.end_time = @end_time_variable
-     
-     
+
+
       if @event.save
         redirect_to root_path
       else
         render :new
       end
-      
+
+  end
+
+  def edit
+
   end
 
   def update
