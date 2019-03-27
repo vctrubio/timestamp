@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :following, :followers, :follow, :unfollow]
 
   def show
+    @events = @user.events.order(end_time: :asc)
   end
 
   def following
