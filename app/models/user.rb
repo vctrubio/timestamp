@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   mount_uploader :picture, PhotoUploader
 
-
+ 
   has_many :events
   has_many :comments, dependent: :destroy #, through: :events
 
