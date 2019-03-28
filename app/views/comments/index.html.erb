@@ -1,5 +1,6 @@
 <h1>Event feed</h1>
-<% @comments.each do |comment| %>
+
+<% @event.comments.each do |comment| %>
 <ul>
   <% if current_user == comment.user %>
   <li><p><%= comment.user.username %>

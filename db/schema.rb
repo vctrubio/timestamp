@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_28_170525) do
+ActiveRecord::Schema.define(version: 2019_03_28_185319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 2019_03_28_170525) do
     t.string "name"
     t.string "username"
     t.string "profile_photo", default: "https://res.cloudinary.com/vvrruubb69e/image/upload/v1553794273/default-user.png"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

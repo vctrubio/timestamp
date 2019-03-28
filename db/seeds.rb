@@ -1,17 +1,23 @@
 require 'faker'
 
-puts 'Creating 10 users...'
-10.times do
+puts 'Creating 1 user and 1 admin: gg@gmail.com, password'
+
  user = User.new(
-   name: 'John',
+   name: Faker::Name.middle_name,
    username: Faker::Internet.username,
-   email:    Faker::Internet.email,
+   email:    "mynew@gmail.com",
    password: "password"
  )
+
+ user_admin = User.new(
+  name: 'Admin',
+  username: "timestamp.admin",
+  email:    "gg@gmail.com",
+  password: "password",
+  admin: true
+)
+
  user.save!
-end
+ user_admin.save!
+
 puts 'Finished!'
-
-
-puts 'victor sucks, I am creating 10 events'
-

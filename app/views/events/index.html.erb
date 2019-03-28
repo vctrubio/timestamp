@@ -1,18 +1,13 @@
 <%# user must be able to click on each map marker to pop up a event %>
-<%= form_tag events_path, method: :get do %>
-      <%= text_field_tag :query,
-      params[:query],
-      class: "form-control search",
-        placeholder: "Search by event or username" %>
-      <% end %>
+
 
 <% @events.each do |e| %>
   <%# if the event is expired, it willl not show in the map %>
     <% if e.end_time > Time.now %>
     <%= e.description %>
     <%= e.title %>
-    <br>
-    <%= cl_image_tag e.picture, height: 300%>
+    <%= link_to "Comment Section", event_comments_path(e) %>
+    <%# <%= cl_image_tag e.picture, height: 300%> %>
     <br>
     <% seconds = ( Time.parse(e.end_time) - Time.now) %>
   time before expires: <%= Time.at(seconds).utc.strftime("%H:%M:%S") %>
