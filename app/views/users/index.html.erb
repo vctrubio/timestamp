@@ -1,0 +1,17 @@
+<%= form_tag users_path, method: :get do %>
+<%= text_field_tag :query,
+params[:query],
+class: "form-control search",
+  placeholder: "Search for people to follow" %>
+  <% end %>
+
+  <% if @users.present? %>
+  <h3>Users that match your search:</h3>
+  <% @users.each do |user| %>
+  <ul>
+    <li><%= link_to "#{user.username}'s profile", user_path(user) %></li>
+  </ul>
+  <% end %>
+  <% else %>
+  <h5>No search results found</h5>
+  <% end %>
