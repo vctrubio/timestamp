@@ -11,8 +11,8 @@
     <% if e.end_time > Time.now %>
     <%= e.description %>
     <%= e.title %>
-    <br>
-    <%= cl_image_tag e.picture, height: 300%>
+    <%= link_to "Comment Section", event_comments_path(e) %>
+    <%# <%= cl_image_tag e.picture, height: 300%> %>
     <br>
     <% seconds = ( Time.parse(e.end_time) - Time.now) %>
   time before expires: <%= Time.at(seconds).utc.strftime("%H:%M:%S") %>
