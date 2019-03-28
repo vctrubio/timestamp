@@ -1,6 +1,6 @@
 <h1><%= @user.email %></h1>
 <p>profile picture testing...</p>
-<h2> <%= cl_image_tag @user.picture, height: 300 %></h2>
+<h2> <%= cl_image_tag @user.profile_photo, height: 300 %></h2>
 
 <p>Following :<%= @user.following.count %></p>     <%= link_to "Following", following_user_path(@user) %>
 

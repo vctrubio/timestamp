@@ -1,8 +1,8 @@
 .form-title {
   color: $purple;
   text-align: center;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .form-button {
@@ -11,7 +11,7 @@
   border-radius: 5px;
   padding: 10px 20px;
   width: 100%;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .form-button:focus {
@@ -67,3 +67,9 @@ padding-top: 3px;
   color: $purple;
   opacity: 0.8;
 }
+.log-in:hover {
+  text-decoration: none;
+  color: $purple;
+  opacity: 0.8;
+}
+
