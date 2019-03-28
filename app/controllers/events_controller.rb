@@ -76,7 +76,7 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :end_time, :start_time, :picture)
+    params.require(:event).permit(:title, :description, :end_time, :start_time, :picture, :latitude, :longitude)
   end
 
   #user_id not passed

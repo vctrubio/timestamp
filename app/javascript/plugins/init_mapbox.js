@@ -7,9 +7,9 @@ import mapboxgl from 'mapbox-gl';
       mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
       const map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v10'
+        style: 'mapbox://styles/komcath/cjti3v6am07fr1fo12f1oer72'
       });
-    }
+    
     const markers = JSON.parse(mapElement.dataset.markers);
     markers.forEach((marker) => {
       new mapboxgl.Marker()
@@ -22,6 +22,7 @@ import mapboxgl from 'mapbox-gl';
     map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
     };
     fitMapToMarkers(map, markers);
+    }
   }
 
 export { initMapbox };
