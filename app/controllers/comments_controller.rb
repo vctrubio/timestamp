@@ -30,7 +30,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    authorize @comment
     @event = @comment.event
+    authorize @event
     @comment.destroy
     redirect_to event_comments_path(@event)
   end
