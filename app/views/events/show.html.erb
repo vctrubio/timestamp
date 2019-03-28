@@ -1,6 +1,5 @@
 <h1><%= @event.title %></h1>
 <h3>Host: <%= @event.user.username %></h3>
-
 <%= @event.title %>
 <%= @event.description %>
 <% seconds = ( Time.parse(@event.end_time) - Time.now) %>
