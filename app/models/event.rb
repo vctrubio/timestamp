@@ -1,10 +1,11 @@
 class Event < ApplicationRecord
-
-    belongs_to :user
-    has_many :comments, dependent: :destroy
-
+  #geocoded_by :address
+  belongs_to :user
+  has_many :comments, dependent: :destroy
     # validates :username, presence: true
-    validates :title, presence: true
+  validates :title, presence: true
+
+  #after_validation :geocode, if: :will_save_change_to_address?
 
   include PgSearch
   pg_search_scope :global_search,
@@ -16,8 +17,7 @@ class Event < ApplicationRecord
       tsearch: { prefix: true }
     }
 
-    mount_uploader :picture, PhotoUploader
-
+  mount_uploader :picture, PhotoUploader
 
 end
 
