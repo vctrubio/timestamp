@@ -23,6 +23,7 @@ end
 
 def destroy?
   record.user == user
+  true
 end
 
 
