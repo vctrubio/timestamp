@@ -7,7 +7,7 @@ import mapboxgl from 'mapbox-gl';
       mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
       const map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/komcath/cjti3v6am07fr1fo12f1oer72'
+        style: 'mapbox://styles/mapbox/streets-v10'
       });
     }
     const markers = JSON.parse(mapElement.dataset.markers);
@@ -25,4 +25,3 @@ import mapboxgl from 'mapbox-gl';
   }
 
 export { initMapbox };
-
