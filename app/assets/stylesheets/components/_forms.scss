@@ -12,28 +12,31 @@
   padding: 10px 20px;
   width: 100%;
   margin-top: 20px;
+
+  &:focus {
+    color: $white;
+  }
 }
 
-.form-button:focus {
-  color: $white;
-}
 
 .form-control {
   border: transparent;
   box-shadow: none;
   border-bottom: 1px solid $purple !important;
   padding: 0px;
+
+  &:focus {
+    outline: none;
+    box-shadow:none !important;
+   border-bottom: 1px solid $purple !important;
+  }
+
 }
 
 .container-form {
   padding: 0px 25px;
 }
 
-.form-control:focus {
-  outline: none;
-  box-shadow:none !important;
- border-bottom: 1px solid $purple !important;
-}
 
 label {
   margin-bottom: 0px !important;
@@ -52,24 +55,30 @@ label {
   justify-content: center;
 }
 
-.fa-camera {
-  margin-right: 10px;
-padding-top: 3px;
-}
 
 .log-in {
   color: $purple;
   margin-top: 15px !important;
+
+  &:active{
+    text-decoration: none;
+    color: $purple;
+    opacity: 0.8;
+  }
+  &:hover {
+    text-decoration: none;
+    color: $purple;
+    opacity: 0.8;
+  }
 }
 
-.log-in:active {
-  text-decoration: none;
-  color: $purple;
-  opacity: 0.8;
+.btn:hover {
+    color: $white;
+    text-decoration: none;
 }
-.log-in:hover {
-  text-decoration: none;
-  color: $purple;
-  opacity: 0.8;
+
+.fa-camera {
+  margin-right: 10px;
+padding-top: 3px;
 }
 
