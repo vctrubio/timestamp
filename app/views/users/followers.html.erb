@@ -1,4 +1,4 @@
 <% @followers.each do |f| %>
-<p><%= f.username %> / <%= f.email %></p> <%= link_to "#{f.email}", user_path(f) %>
+<p><%= f.username %> / <%= link_to "#{f.email}", user_path(f) %></p> 
 <p>---------------------</p>
 <% end %>
