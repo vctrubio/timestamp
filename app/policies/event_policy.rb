@@ -1,9 +1,12 @@
 class EventPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.all.select do |e|
+        user.following?(e.user) || user.admin 
+      end
     end
   end
+  # need to reseolve / finish to scope e.user_id == current_user
 
   def create?
     true
