@@ -31,6 +31,8 @@
            <li><%= link_to "delete", user_event_path(event.user_id, event.id), method: :delete %></li>
            <li><%= link_to "end event", terminate_event_path(event.id), method: "patch" %></li>
           <% end %>
+        <li><%= link_to "Comments Section", event_comments_path(event)%></li>
+
     </ul>
     <% else %>
       <ul>

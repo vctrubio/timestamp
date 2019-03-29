@@ -19,7 +19,7 @@
           <div class="row">
             <div class="col-sm-12">
               <%= simple_form_for(@event) do |f| %>
-              <div class="form-inputs">
+              <div class="form-inputs" id="new_event">
                 <%= f.input :title,
                 required: true,
                 autofocus: true,
@@ -40,7 +40,7 @@
               </div>
               <div class="form-actions">
               <% end %>
-              <button id='make-event' class="form-button">Create Event</button>
+              <button id='make-event' class="form-button" > Create Event </button>
               </div>
 
             </div>
