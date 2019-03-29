@@ -3,6 +3,7 @@
   style="width: 100%;
   height: 600px;"
   data-markers="<%= @markers.to_json %>"
+  data-render= "<%= render "tooltip.html.erb" %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 >
 
@@ -28,7 +29,7 @@
 
     <%# calculcate rundown_time with javascript https://www.geeksforgeeks.org/create-countdown-timer-using-javascript/, the end time will be event.end_time %>
     <br>
-    
+
     <%= e.comments.count %> comments
 
     <% end %>
@@ -51,7 +52,7 @@
     <%= f.input :picture %>
     <%= f.input :picture_cache, as: :hidden %>
     <%= f.input :end_time, collection: 1..24 %>
-    
+
   <% end %>
   <button id='make-event'>Create Event</button>
 </div>

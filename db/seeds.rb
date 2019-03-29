@@ -13,5 +13,5 @@ end
 puts 'Finished!'
 
 
-puts 'victor sucks, I am creating 10 events'
+
 
