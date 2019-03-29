@@ -1,0 +1,55 @@
+.event-title {
+  text-align: center;
+  color: $purple;
+}
+.modal-header {
+  .close {
+    outline: none;
+  }
+}
+.css-modal-content {
+  border-radius: 8px 8px 0 0;
+  border: none;
+}
+
+.modal-dialog {
+  margin: 0 !important;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.event-title {
+    text-align: center;
+    color: #6922FF;
+    flex-grow: 1;
+}
+
+
+// ANIMATE
+@keyframes slideInUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInUp {
+  animation-name: slideInUp;
+}
+
+.animated {
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+@media (print), (prefers-reduced-motion) {
+  .animated {
+    animation: unset !important;
+    transition: none !important;
+  }
+}

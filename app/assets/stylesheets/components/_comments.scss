@@ -1,4 +1,4 @@
-.comment-title {
+.comment-title{
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -10,10 +10,11 @@
 }
 
 .user-comment {
-  margin-top: 10px;
-  display: inline-block;
+  // margin-top: 10px;
+  display: flex;
   justify-content: space-between;
   flex-grow: 1;
+  align-items: center;
   input {
     border-radius: 16px;
     outline: none;
@@ -26,39 +27,45 @@
   width: 100%;
   display: flex;
   align-items: center;
-  #comment_content{
-  flex-grow: 1;
-}
-.submit-button{
-  flex-basis: 20%;
-}
+  margin: 0px 10px;
+    #comment_content{
+    flex-grow: 1;
+    }
+    .submit-button{
+      flex-basis: 20%;
+    }
 }
 
 ul {
   padding: 0;
 }
-li {
-  list-style: none;
-}
+
 
 .comments {
   margin-top: 30px;
   margin-bottom: 55px;
 }
 
-.comentario {
+li.comentario {
   border-bottom: 1px solid rgba(105, 34, 255, 0.1) !important;
   padding-bottom: 8px;
+  list-style: none;
+  p{
+    display: inline-block;
+    font-size: 12px;
+  }
 }
 
 .user-bold {
   font-weight: bold;
+  font-size: 12px;
 }
 
 .submit-button {
   color: $orange;
   background: none;
   border: none !important;
+  font-size: 14px;
   &:active {
     opacity: 0.6;
   }
@@ -69,11 +76,6 @@ li {
   padding: 5px 10px;
   display: flex;
   height: 50px;
-}
-
-.back-image {
-  color: $purple;
-  font-size: 20px;
 }
 
 .time-back {

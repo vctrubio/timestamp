@@ -24,7 +24,6 @@
       <%= form_tag events_path, method: :get do %>
         <%= text_field_tag :query,
         params[:query],
-        class: "search",
           placeholder: "Search username or event" %>
           <i class="fas fa-search-location lupa"></i>
       <% end %>

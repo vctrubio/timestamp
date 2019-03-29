@@ -5,19 +5,6 @@
   margin-bottom: 40px;
 }
 
-.form-button {
-  background-color: $orange;
-  color: $white;
-  border-radius: 5px;
-  padding: 10px 20px;
-  width: 100%;
-  margin-top: 20px;
-
-  &:focus {
-    color: $white;
-  }
-}
-
 .form-control {
   border: transparent;
   box-shadow: none;

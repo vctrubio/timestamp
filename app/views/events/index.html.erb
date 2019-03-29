@@ -1,8 +1,80 @@
-<%# user must be able to click on each map marker to pop up a event %>
+<!-- BUTTON MODAL -->
+<button type="button" class="btn button-marker-map" data-toggle="modal" data-target="#exampleModal">
+  <i class="fas fa-map-marker"></i>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog slideInUp animated" role="document">
+    <div class="modal-content css-modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title event-title" id="exampleModalLabel">Event</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="container container-form">
+          <div class="row">
+            <div class="col-sm-12">
+              <%= simple_form_for(@event) do |f| %>
+              <div class="form-inputs">
+                <%= f.input :title,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "title" },
+                placeholder: "Your event title" %>
+                <%= f.input :description,
+                required: true,
+                input_html: { autocomplete: "description" },
+                placeholder: "Description of your event"%>
+                <%= f.input :end_time, collection: 1..24,
+                required: true,
+                input_html: { autocomplete: "" },
+                placeholder: "Timestamp expiration" %>
+                <%= f.input :picture, as: :file, label: "Upload photo"%>
+                <%= f.input :picture_cache, as: :hidden %>
+              </div>
+              <div class="form-actions">
+                <%= f.button :submit, "Timestamp", class: "form-button" %>
+              </div>
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+
+
+<!--         <%= simple_form_for(@event) do |f| %>
+        <%= f.label :title %>
+        <%= f.text_field :title  %>
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+          <%= f.input :picture %>
+          <%= f.input :picture_cache, as: :hidden %>
+        <%= f.input :end_time, collection: 1..24 %>
+        <div class="form-actions">
+          <%= f.button :submit, "Create", class: "form-button" %>
+        </div>
+      <% end %> -->
+
+
+
+
+
 
 
 <% @events.each do |e| %>
-  <%# if the event is expired, it willl not show in the map %>
     <% if e.end_time > Time.now %>
     <%= e.description %>
     <%= e.title %>
@@ -11,32 +83,9 @@
     <br>
     <% seconds = ( Time.parse(e.end_time) - Time.now) %>
   time before expires: <%= Time.at(seconds).utc.strftime("%H:%M:%S") %>
-
-    <%# calculcate rundown_time with javascript https://www.geeksforgeeks.org/create-countdown-timer-using-javascript/, the end time will be event.end_time %>
     <br>
-
-
-
-
-    <!-- this will set the end time of the event to the current time, thus "ending it" -->
-
-     <%# e.comments.each do |comment|  %>
-    <%# comment.content %>
-      <%# <% end %>
-    <%# each event must have a list of all their comments %>
-
     <%= e.comments.count %> comments
-    <%# we must show the count of comments %>
     <% end %>
-
-
-
-
-
-    <%# remember, @events is a array of all the events, and .comments will return an array of all the comments %>
-
-
-
     <br>
     <% end %>
 
@@ -45,16 +94,4 @@
 <br>
 
 
-<%= simple_form_for(@event) do |f| %>
-<%= f.label :title %>
-<%= f.text_field :title  %>
-<%= f.label :description %>
-<%= f.text_field :description %>
-  <%= f.input :picture %>
-  <%= f.input :picture_cache, as: :hidden %>
-<%= f.input :end_time, collection: 1..24 %>
-
-<%= f.submit %>
-
-<% end %>
 
