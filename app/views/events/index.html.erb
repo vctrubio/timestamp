@@ -29,6 +29,8 @@
                 required: true,
                 input_html: { autocomplete: "description" },
                 placeholder: "Description of your event"%>
+                    <%= f.input :latitude, as: :hidden, input_html: { id: 'lat', value: f.object.latitude || '12.4326'  } %>
+    <%= f.input :longitude, as: :hidden, input_html: { id: 'lon', value: f.object.longitude || '91.1332'    } %>
                 <%= f.input :end_time, collection: 1..24,
                 required: true,
                 input_html: { autocomplete: "" },
@@ -37,13 +39,15 @@
                 <%= f.input :picture_cache, as: :hidden %>
               </div>
               <div class="form-actions">
-                <%= f.button :submit, "Timestamp", class: "form-button" %>
-              </div>
               <% end %>
+              <button id='make-event' class="form-button">Create Event</button>
+              </div>
 
             </div>
           </div>
         </div>
+
+
 
 
       </div>
@@ -73,25 +77,15 @@
 
 
 
+<div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+>
 
-<% @events.each do |e| %>
-    <% if e.end_time > Time.now %>
-    <%= e.description %>
-    <%= e.title %>
-    <%= link_to "Comment Section", event_comments_path(e) %>
-    <%# <%= cl_image_tag e.picture, height: 300%> %>
-    <br>
-    <% seconds = ( Time.parse(e.end_time) - Time.now) %>
-  time before expires: <%= Time.at(seconds).utc.strftime("%H:%M:%S") %>
-    <br>
-    <%= e.comments.count %> comments
-    <% end %>
-    <br>
-    <% end %>
-
-
-<br>
-<br>
+</div>
 
 
 

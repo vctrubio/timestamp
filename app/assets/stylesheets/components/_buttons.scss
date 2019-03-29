@@ -27,6 +27,7 @@
   position: absolute;
   left: 40%;
   top: 83%;
+  z-index: 100;
     &:focus{
     box-shadow: none;
     }

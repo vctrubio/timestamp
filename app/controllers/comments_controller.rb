@@ -1,5 +1,9 @@
 class CommentsController < ApplicationController
-  before_action :set_event, only: [:index, :create, :new, :show]
+
+  before_action :set_comment, only: [:destroy]
+  before_action :set_event, only: [:index, :create, :new]
+
+
 
   def index
     @comment = Comment.new
@@ -25,7 +29,19 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    authorize @comment
+    @event = @comment.event
+    authorize @event
+    @comment.destroy
+    redirect_to event_comments_path(@event)
+  end
+
   private
+
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
 
   def set_event
     @event = Event.find(params[:event_id])
