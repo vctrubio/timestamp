@@ -11,19 +11,6 @@ import mapboxgl from 'mapbox-gl';
         zoom: 4
       });
 
-
-// {
-//         title: event.title,
-//         lat: event.latitude,
-//         lng: event.longitude,
-//         description: event.description,
-//         picture: event.picture,
-//         comment_link: event_comments_path(event),
-//         end_time: event.end_time,
-//         user_id: event.user_id
-//       }
-
-
     const render = mapElement.dataset.render;
     const markers = JSON.parse(mapElement.dataset.markers);
     markers.forEach((marker) => {
@@ -42,6 +29,9 @@ import mapboxgl from 'mapbox-gl';
     };
     fitMapToMarkers(map, markers);
     }
+
+
+
   }
 
 export { initMapbox };
