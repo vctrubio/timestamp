@@ -4,7 +4,6 @@
   style="width: 100%;
   height: 600px;"
   data-markers="<%= @markers.to_json %>"
-  data-render= "<%= render "tooltip.html.erb" %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 >
 
@@ -60,6 +59,7 @@
     <%= f.input :picture_cache, as: :hidden %>
     <%= f.input :end_time, collection: 1..24 %>
 
-  <button type="submit" id='make-event'>Create Event</button>
   <% end %>
+
+    <button id='make-event'>Create Event</button>
 </div>
