@@ -18,10 +18,21 @@ import mapboxgl from 'mapbox-gl';
         new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(new mapboxgl.Popup({ offset: 25 })
-        .setHTML(`<div><h1>${marker.title}</h1></div>`
+        .setHTML(
+
+        `<a href="/users/${marker.username}">${marker.username}</a>
+        <br>
+        <h3>${marker.title}</h3>
+        <br>
+        <p>${marker.description}</p>
+        <br>  
+        <a href="/events/${marker.event_id}/comments">COMMENTS</a>`
         ))
         .addTo(map);
       }
+
+    
+      
 
     });
 
