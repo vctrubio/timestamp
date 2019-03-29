@@ -23,22 +23,23 @@
 
 
 
-
 <% @events.each do |event| %>
   <% if event.end_time > Time.now %>
     <ul>
-      <li><%= event.title %> <%= event.end_time %></li>
-      <%= link_to "delete", user_event_path(event.user_id, event.id), method: :delete %>
-      event active
-      <li><%= link_to "end event", terminate_event_path(event.id), method: "patch" %></li>
+      <li><%= event.title %> |ending at:<%= event.end_time %></li>
+        <% if policy(event).destroy? %>
+           <li><%= link_to "delete", user_event_path(event.user_id, event.id), method: :delete %></li>
+           <li><%= link_to "end event", terminate_event_path(event.id), method: "patch" %></li>
+          <% end %>
     </ul>
     <% else %>
       <ul>
-        <li><%= event.title %> <%= event.created_at %></li>
-        <%= link_to "delete", user_event_path(event.user_id, event.id), method: :delete %>
-        <li>
-        <%= link_to "Comments Section", event_comments_path(event)%>
-        </li>
+
+          <li><%= event.title %> <%= event.created_at %></li>
+             <% if policy(event).destroy?  %>
+               <%= link_to "delete", user_event_path(event.user_id, event.id), method: :delete %>
+            <% end %>
+          <li><%= link_to "Comments Section", event_comments_path(event)%></li>
     </ul>
   <% end %>
 <% end %>

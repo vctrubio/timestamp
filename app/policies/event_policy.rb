@@ -1,8 +1,12 @@
 class EventPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all.select do |e|
-        user.following?(e.user) || user.admin 
+      if user.admin?
+        scope.all
+      else
+        scope.all.select do |e|
+          user.following?(e.user) || e.user.id == user.id
+        end
       end
     end
   end
@@ -26,10 +30,6 @@ end
 
 def destroy?
   record.user == user
-  true
 end
 
-
-
-  
 end

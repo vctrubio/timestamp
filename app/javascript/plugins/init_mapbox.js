@@ -17,7 +17,8 @@ import mapboxgl from 'mapbox-gl';
       new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(new mapboxgl.Popup({ offset: 25 })
-        .setHTML(`<div><h1>${marker.title}</h1></div>`))
+        .setHTML(`<div><h1>${marker.title}</h1></div>`
+        ))
         .addTo(map);
 
     });
