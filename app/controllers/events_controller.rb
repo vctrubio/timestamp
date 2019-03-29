@@ -5,6 +5,8 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
   def terminate
   @event.update(end_time: Time.now)
   redirect_to current_user
+  authorize @event
+
     # since youre editing in the user show, this just refreshes the page
   end
 
@@ -98,7 +100,7 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
 
   def find_event
     @event = Event.find(params[:id])
-     authorize @event
+    authorize @event 
   end
 
 
