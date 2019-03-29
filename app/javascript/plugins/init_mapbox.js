@@ -14,17 +14,21 @@ import mapboxgl from 'mapbox-gl';
     const render = mapElement.dataset.render;
     const markers = JSON.parse(mapElement.dataset.markers);
     markers.forEach((marker) => {
-      new mapboxgl.Marker()
+      if (marker) {
+        new mapboxgl.Marker()
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(new mapboxgl.Popup({ offset: 25 })
         .setHTML(`<div><h1>${marker.title}</h1></div>`
         ))
         .addTo(map);
+      }
 
     });
-    const fitMapToMarkers = (map, markers) => {
+
+    if (markers[0]) {
+      const fitMapToMarkers = (map, markers) => {
     const bounds = new mapboxgl.LngLatBounds();
-    markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
+     markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
     map.fitBounds(bounds, { padding: 70, maxZoom: 13 });
     };
     fitMapToMarkers(map, markers);
@@ -35,6 +39,9 @@ import mapboxgl from 'mapbox-gl';
       trackUserLocation: true
     }));
     }
+      
+    }
+
   }
 
 export { initMapbox };

@@ -2,10 +2,16 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :following, :followers, :follow, :unfollow]
 
   def index
+    policy_scope(User)
     if params[:query].present?
       @users = User.user_search(params[:query]).order(name: :asc)
     end
-    @users = [] unless @users
+    if @users
+      authorize(@users)
+    else
+      @users = []
+    end
+
   end
 
   def show

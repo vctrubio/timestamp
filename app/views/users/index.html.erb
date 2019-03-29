@@ -4,7 +4,6 @@ params[:query],
 class: "form-control search",
   placeholder: "Search for people to follow" %>
   <% end %>
-
   <% if @users.present? %>
   <h3>Users that match your search:</h3>
   <% @users.each do |user| %>

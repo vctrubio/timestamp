@@ -1,3 +1,81 @@
+<!-- BUTTON MODAL -->
+<button type="button" class="btn button-marker-map" data-toggle="modal" data-target="#exampleModal">
+  <i class="fas fa-map-marker"></i>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog slideInUp animated" role="document">
+    <div class="modal-content css-modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title event-title" id="exampleModalLabel">Event</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="container container-form">
+          <div class="row">
+            <div class="col-sm-12">
+              <%= simple_form_for(@event) do |f| %>
+              <div class="form-inputs">
+                <%= f.input :title,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "title" },
+                placeholder: "Your event title" %>
+                <%= f.input :description,
+                required: true,
+                input_html: { autocomplete: "description" },
+                placeholder: "Description of your event"%>
+                    <%= f.input :latitude, as: :hidden, input_html: { id: 'lat', value: f.object.latitude || '12.4326'  } %>
+    <%= f.input :longitude, as: :hidden, input_html: { id: 'lon', value: f.object.longitude || '91.1332'    } %>
+                <%= f.input :end_time, collection: 1..24,
+                required: true,
+                input_html: { autocomplete: "" },
+                placeholder: "Timestamp expiration" %>
+                <%= f.input :picture, as: :file, label: "Upload photo"%>
+                <%= f.input :picture_cache, as: :hidden %>
+              </div>
+              <div class="form-actions">
+              <% end %>
+              <button id='make-event' class="form-button">Create Event</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+
+
+
+<!--         <%= simple_form_for(@event) do |f| %>
+        <%= f.label :title %>
+        <%= f.text_field :title  %>
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+          <%= f.input :picture %>
+          <%= f.input :picture_cache, as: :hidden %>
+        <%= f.input :end_time, collection: 1..24 %>
+        <div class="form-actions">
+          <%= f.button :submit, "Create", class: "form-button" %>
+        </div>
+      <% end %> -->
+
+
+
+
+
 
 <div
   id="map"
@@ -10,56 +88,4 @@
 </div>
 
 
-<%= form_tag events_path, method: :get do %>
-      <%= text_field_tag :query,
-      params[:query],
-      class: "form-control search",
-        placeholder: "Search by event or username" %>
-      <% end %>
 
-
-<% @events.each do |e| %>
-    <% if e.end_time > Time.now %>
-    <%= e.description %>
-    <%= e.title %>
-    <%= link_to "Comment Section", event_comments_path(e) %>
-    <%# <%= cl_image_tag e.picture, height: 300%> %>
-    <br>
-    <% seconds = ( Time.parse(e.end_time) - Time.now) %>
-  time before expires: <%= Time.at(seconds).utc.strftime("%H:%M:%S") %>
-
- <%# if current_user = e.user_id %>
-<% if current_user.id == e.user_id || current_user.admin %>
-<%= link_to "delete me", event_path(e), method: :delete %>
-<% end %>
-
-    <%# calculcate rundown_time with javascript https://www.geeksforgeeks.org/create-countdown-timer-using-javascript/, the end time will be event.end_time %>
-    <br>
-
-    <%= e.comments.count %> comments
-
-    <% end %>
-
-    <br>
-    <% end %>
-
-<br>
-<br>
-
-<div class="new-event-form">
-
-  <%= simple_form_for(@event) do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title  %>
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-    <%= f.input :latitude, as: :hidden, input_html: { id: 'lat', value: f.object.latitude || '12.4326'  } %>
-    <%= f.input :longitude, as: :hidden, input_html: { id: 'lon', value: f.object.longitude || '91.1332'    } %>
-    <%= f.input :picture %>
-    <%= f.input :picture_cache, as: :hidden %>
-    <%= f.input :end_time, collection: 1..24 %>
-
-  <% end %>
-
-    <button id='make-event'>Create Event</button>
-</div>

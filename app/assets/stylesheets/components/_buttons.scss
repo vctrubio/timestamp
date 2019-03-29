@@ -1,0 +1,41 @@
+// FORM BUTTON
+.form-button {
+  background-color: $orange;
+  color: $white;
+  border-radius: 5px;
+  padding: 10px 20px;
+  width: 100%;
+  margin-top: 20px;
+
+  &:focus {
+    color: $white;
+  }
+}
+
+// BACK BUTTON <
+.button-image-back {
+  color: $purple;
+  font-size: 20px;
+}
+
+// MARKER BUTTON
+.button-marker-map {
+  background-color: $purple;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  left: 40%;
+  top: 83%;
+  z-index: 100;
+    &:focus{
+    box-shadow: none;
+    }
+    &:active{
+        transform: scale(0.95);
+    }
+  .fa-map-marker {
+    color: $white;
+    font-size: 40px;
+  }
+}

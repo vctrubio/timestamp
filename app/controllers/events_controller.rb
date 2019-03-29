@@ -35,8 +35,7 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
     # must be able to make new comments in the show
     @comment = Comment.new
     @event = Event.new
-
-    @events = policy_scope(Event)
+    authorize(@event)
   end
 
   def show
