@@ -28,6 +28,9 @@ import mapboxgl from 'mapbox-gl';
     };
     fitMapToMarkers(map, markers);
     }
+
+
+
   }
 
 export { initMapbox };
