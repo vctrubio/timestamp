@@ -15,7 +15,8 @@
   </ul>
 <% end %>
 <% end %>
-<%= simple_form_for [@event,@comment] do |f| %>
+
+<%= simple_form_for [@event, @comment] do |f| %>
 <%= f.text_field :content %>
 <%= f.submit 'Post Comment' %>
 <% end %>

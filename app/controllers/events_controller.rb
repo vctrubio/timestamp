@@ -73,7 +73,8 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
       if @event.save
         redirect_to root_path
       else
-        render :new
+        redirect_to root_path
+        # render :index
       end
 
   end
