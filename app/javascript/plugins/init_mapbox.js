@@ -20,19 +20,19 @@ import mapboxgl from 'mapbox-gl';
         .setPopup(new mapboxgl.Popup({ offset: 25 })
         .setHTML(
 
-        `<a href="/users/${marker.username}">${marker.username}</a>
+        `<a href="/users/${marker.user_id}">${marker.username}</a>
         <br>
         <h3>${marker.title}</h3>
         <br>
         <p>${marker.description}</p>
-        <br>  
+        <br>
         <a href="/events/${marker.event_id}/comments">COMMENTS</a>`
         ))
         .addTo(map);
       }
 
-    
-      
+
+
 
     });
 
@@ -50,7 +50,7 @@ import mapboxgl from 'mapbox-gl';
       trackUserLocation: true
     }));
     }
-      
+
     }
 
   }

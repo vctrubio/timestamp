@@ -23,6 +23,6 @@ const geolocationSuccess = (pos) => {
 };
 
 submitButton.addEventListener("click", (event) => {
-  // event.preventDefault();
+   event.preventDefault();
   navigator.geolocation.getCurrentPosition(geolocationSuccess);
 });

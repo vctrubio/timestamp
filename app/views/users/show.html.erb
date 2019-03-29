@@ -1,6 +1,6 @@
+ <%= render 'shared/navbar' %>
 <h1><%= @user.email %></h1>
-<p>profile picture testing...</p>
-<h2> <%= cl_image_tag @user.profile_photo, height: 300 %></h2>
+<h2> <%= cl_image_tag @user.profile_photo, height: 150 %></h2>
 
 <p>Following :<%= @user.following.count %></p>     <%= link_to "Following", following_user_path(@user) %>
 <p>Followers: <%= @user.followers.count %></p> <%= link_to "Followers", followers_user_path(@user) %>
@@ -31,7 +31,7 @@
            <li><%= link_to "delete", user_event_path(event.user_id, event.id), method: :delete %></li>
            <li><%= link_to "end event", terminate_event_path(event.id), method: "patch" %></li>
           <% end %>
-          
+
     </ul>
     <% else %>
       <ul>

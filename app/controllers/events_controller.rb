@@ -22,7 +22,7 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
         comment_link: event_comments_path(event),
         end_time: event.end_time,
         user_id: event.user_id,
-        username: event.user_id,
+        username: event.user.username,
         event_id: event.id
       }
     end
