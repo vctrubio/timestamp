@@ -1,13 +1,40 @@
-<h1>Event feed</h1>
-<% @comments.each do |comment| %>
-<ul>
-  <li><p><%= comment.user.username %>
-         <%= comment.content %>
-         <%= time_ago_in_words(comment.created_at) %></p></li>
-</ul>
-<% end %>
 
-<%= simple_form_for [@event,@comment] do |f| %>
-<%= f.text_field :content %>
-<%= f.submit 'Post Comment' %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <div class="comment-title fixed-top">
+        <%= link_to root_path do %>
+          <button><i class="fas fa-angle-left back-image"></i></button>
+        <% end %>
+        <h3><%= @event.title.capitalize %></h3>
+        <span class="time-back"><% seconds = ( Time.parse(@event.end_time) - Time.now) %>
+        <%= Time.at(seconds).utc.strftime("%H:%M:%S") %></span>
+      </div>
+
+      <div class="comments">
+        <% @event.comments.each do |comment| %>
+        <ul>
+          <li class="comentario">
+            <%= cl_image_tag comment.user.profile_photo, class: "avatar-comment"%>
+           <span class="user-bold"><%=  comment.user.username %></span>
+            <%= comment.content %>
+            <span class="time-ago"><%= time_ago_in_words(comment.created_at) %></span>
+          </li>
+        </ul>
+        <% end %>
+      </div>
+
+      <div class="background-user fixed-bottom">
+        <%= cl_image_tag current_user.profile_photo, class: "avatar" %>
+        <div class="user-comment">
+          <%= simple_form_for [@event, @comment] do |f| %>
+          <%= f.text_field :content %>
+          <%= f.submit 'Post', class: "submit-button" %>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

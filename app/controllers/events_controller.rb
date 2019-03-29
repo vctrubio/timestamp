@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
 before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
 
+
   def terminate
   @event.update(end_time: Time.now)
   redirect_to current_user
@@ -8,6 +9,7 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
   end
 
   def index
+    policy_scope(Event)
     if params[:query].present?
       @events = Event.global_search(params[:query]).order(end_time: :asc)
     else
@@ -18,12 +20,15 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
     # must be able to make new comments in the show
     @comment = Comment.new
     @event = Event.new
+    authorize(@event)
   end
 
   def show
+    authorize @event
   end
 
   def destroy
+    authorize @event
     @event.destroy
     redirect_to current_user
       # since youre editing in the user show, this just refreshes the page
@@ -36,6 +41,7 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
   def create
     @event = Event.new(event_params)
     @event.user = current_user
+    authorize @event
 
     @start_time = Time.now
     @event.start_time = @start_time
@@ -59,10 +65,11 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
   end
 
   def edit
-
+    authorize @event
   end
 
   def update
+    authorize @event
     @event.update(event_params)
   end
 
@@ -72,12 +79,11 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
     params.require(:event).permit(:title, :description, :end_time, :start_time, :picture)
   end
 
-  #user_id not passed
 
 
   def find_event
     @event = Event.find(params[:id])
-    # authorize @event
+     authorize @event
   end
 
 

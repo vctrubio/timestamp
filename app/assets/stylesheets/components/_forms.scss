@@ -18,7 +18,6 @@
   }
 }
 
-
 .form-control {
   border: transparent;
   box-shadow: none;
@@ -30,13 +29,11 @@
     box-shadow:none !important;
    border-bottom: 1px solid $purple !important;
   }
-
 }
 
 .container-form {
   padding: 0px 25px;
 }
-
 
 label {
   margin-bottom: 0px !important;
@@ -73,12 +70,12 @@ label {
 }
 
 .btn:hover {
-    color: $white;
-    text-decoration: none;
+  color: $white;
+  text-decoration: none;
 }
 
 .fa-camera {
   margin-right: 10px;
-padding-top: 3px;
+  padding-top: 3px;
 }
 
