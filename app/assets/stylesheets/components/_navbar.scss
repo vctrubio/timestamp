@@ -1,6 +1,28 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  display: flex;
+  background-image: linear-gradient(rgba(105, 34, 255, 0.7), rgba(0, 0, 0, 0));
+
+  .dropdown-menu.show {
+  left: 0;
+  left: auto;
+}
+
+.dropdown-item {
+  color: $purple;
+}
+
+  form{
+    flex-grow: 1;
+    margin-left: 20px;
+
+    input{
+      width: 100%;
+      padding-left: 2em;
+    }
+  }
+
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +31,23 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+#query {
+  border: none;
+  outline: none;
+  box-shadow:none !important;
+  background-color: transparent;
+}
+
+.navbar-nav .dropdown-menu {
+    position: absolute;
+    float: none;
+}
+.fas {
+  position: absolute;
+  font-size: 18px;
+  color: grey;
+  top: 18px;
+  left: 80px;
 }

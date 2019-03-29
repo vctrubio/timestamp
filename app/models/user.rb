@@ -2,9 +2,9 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
-  mount_uploader :picture, PhotoUploader
+  mount_uploader :profile_photo, PhotoUploader
 
- 
+
   has_many :events
   has_many :comments, dependent: :destroy #, through: :events
 
@@ -21,6 +21,17 @@ class User < ApplicationRecord
   has_many :passive_relationships, class_name:  "Relationship",
                                    foreign_key: "followed_id",
                                    dependent:   :destroy
+
+
+  include PgSearch
+  pg_search_scope :user_search,
+    against: [ :username, :name, :email ],
+    associated_against: {
+      events: [ :title ]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
   # ^
   # active_relationship.follower => Returns the follower
   # active_relationship.followed => Returns the followed user

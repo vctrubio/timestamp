@@ -1,3 +1,4 @@
+
 <div
   id="map"
   style="width: 100%;
@@ -17,15 +18,21 @@
         placeholder: "Search by event or username" %>
       <% end %>
 
+
 <% @events.each do |e| %>
     <% if e.end_time > Time.now %>
     <%= e.description %>
     <%= e.title %>
-    <br>
-    <%= cl_image_tag e.picture, height: 300%>
+    <%= link_to "Comment Section", event_comments_path(e) %>
+    <%# <%= cl_image_tag e.picture, height: 300%> %>
     <br>
     <% seconds = ( Time.parse(e.end_time) - Time.now) %>
   time before expires: <%= Time.at(seconds).utc.strftime("%H:%M:%S") %>
+
+ <%# if current_user = e.user_id %>
+<% if current_user.id == e.user_id || current_user.admin %>
+<%= link_to "delete me", event_path(e), method: :delete %>
+<% end %>
 
     <%# calculcate rundown_time with javascript https://www.geeksforgeeks.org/create-countdown-timer-using-javascript/, the end time will be event.end_time %>
     <br>

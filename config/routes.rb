@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     member do
       patch :terminate
     end
-    resources :comments
+    resources :comments, shallow: true
   end
 
 

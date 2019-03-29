@@ -19,6 +19,9 @@ gem 'geocoder'
 gem 'pg_search'
 gem 'carrierwave', '~> 1.2'
 
+gem 'pundit'
+
+
 
 
 
