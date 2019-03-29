@@ -9,12 +9,26 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
   end
 
   def index
+    @events = Event.where.not(latitude: nil, longitude: nil)
+    @markers = @events.map do |event|
+      {
+        title: event.title,
+        lat: event.latitude,
+        lng: event.longitude,
+        description: event.description,
+        picture: event.picture,
+        comment_link: event_comments_path(event),
+        end_time: event.end_time,
+        user_id: event.user_id,
+        username: event.id
+      }
+    end
+
     if params[:query].present?
       @events = Event.global_search(params[:query]).order(end_time: :asc)
     else
       @events = Event.order(end_time: :asc)
     end
-
 
     # must be able to make new comments in the show
     @comment = Comment.new
@@ -76,7 +90,7 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :end_time, :start_time, :picture)
+    params.require(:event).permit(:title, :description, :end_time, :start_time, :picture, :latitude, :longitude)
   end
 
 
