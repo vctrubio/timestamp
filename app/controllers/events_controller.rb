@@ -11,8 +11,7 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
   end
 
   def index
-    policy_scope(Event)
-    @events = Event.where.not(latitude: nil, longitude: nil)
+    @events = policy_scope(Event)
     @markers = @events.map do |event|
       {
         title: event.title,

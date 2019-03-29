@@ -2,9 +2,9 @@ class EventPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user.admin?
-        scope.all
+        scope.where.not(latitude: nil, longitude: nil)
       else
-        scope.all.select do |e|
+        scope.where.not(latitude: nil, longitude: nil).select do |e|
           user.following?(e.user) || e.user.id == user.id
         end
       end
