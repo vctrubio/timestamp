@@ -9,6 +9,7 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
   end
 
   def index
+    policy_scope(Event)
     if params[:query].present?
       @events = Event.global_search(params[:query]).order(end_time: :asc)
     else
@@ -19,8 +20,7 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
     # must be able to make new comments in the show
     @comment = Comment.new
     @event = Event.new
-
-    @events = policy_scope(Event)
+    authorize(@event)
   end
 
   def show
