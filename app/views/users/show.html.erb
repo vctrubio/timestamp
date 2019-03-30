@@ -5,9 +5,6 @@
 <p>Following :<%= @user.following.count %></p>     <%= link_to "Following", following_user_path(@user) %>
 <p>Followers: <%= @user.followers.count %></p> <%= link_to "Followers", followers_user_path(@user) %>
 
-<br>
-
-
 <div>
     <% if current_user.id != @user.id %>
     <%# buttton to show follow %>
@@ -18,11 +15,8 @@
     <% end %>
     <% else %>
     <%= link_to "Edit", edit_user_registration_path(current_user) %>
-  <% end %>
+    <% end %>
 </div>
-
-
-
 <% @events.each do |event| %>
   <% if event.end_time > Time.now %>
     <ul>
@@ -30,12 +24,10 @@
         <% if policy(event).destroy? %>
            <li><%= link_to "delete", user_event_path(event.user_id, event.id), method: :delete %></li>
            <li><%= link_to "end event", terminate_event_path(event.id), method: "patch" %></li>
-          <% end %>
-
+<% end %>
     </ul>
     <% else %>
       <ul>
-
           <li><%= event.title %> <%= event.created_at %></li>
              <% if policy(event).destroy?  %>
                <%= link_to "delete", user_event_path(event.user_id, event.id), method: :delete %>
