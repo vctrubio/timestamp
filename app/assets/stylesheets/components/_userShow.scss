@@ -1,0 +1,94 @@
+.event-box-container {
+padding: 0% 3%;
+
+}
+
+.comment-box {
+  background-color: white;
+}
+
+.splitter {
+  background-color: $purple;
+  width: 100%;
+  height: 2px;
+  margin: 5px 0px;
+}
+
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 8px;
+}
+
+.user-info h1 {
+  display: inline;
+  padding: 0px 5px;
+  color: $purple;
+  font-size: 20px;
+}
+
+.user-info h2 {
+  display: inline;
+  padding: 0px 5px;
+  font-weight: lighter;
+  font-size: 15px;
+}
+
+.user-info h3 {
+  display: inline;
+  padding: 0px 5px;
+  font-weight: lighter;
+  font-size: 15px;
+}
+
+.followers-following {
+  padding-top: 20px;
+}
+
+
+.event-list {
+display: flex;
+justify-content: space-between;
+
+}
+
+.user-show-event-title {
+    display: inline;
+
+}
+
+.user-show-event-title h1 {
+    display: inline;
+    color: gray;
+    font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 16px;
+line-height: normal;
+}
+
+.user-show-event-end-time {
+  display: inline;
+  padding-right: 10px;
+}
+
+
+.user-show-event-end-time h1 {
+  display: inline;
+  color: gray;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: normal;
+}
+
+.soft-splitter {
+  width: 100%;
+  height: 1px;
+  background-color: gray;
+}
+.active-delete {
+
+}
+

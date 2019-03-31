@@ -1,15 +1,3 @@
-import "bootstrap";
-import 'mapbox-gl/dist/mapbox-gl.css';
-
-import { initMapbox } from '../plugins/init_mapbox';
-import { initMapbox2 } from './user_show_map';
-import {countDownTimer} from './count_down_time';
-initMapbox();
-initMapbox2();
-countDownTimer();
-
-
-// geolocation JS
 const lat = document.getElementById('lat')
 const lon = document.getElementById('lon')
 const submitButton = document.getElementById('make-event')
@@ -17,15 +5,15 @@ const eventForm = document.getElementById('new_event')
 
 const geolocationSuccess = (pos) => {
   const latitude = pos.coords.latitude;
+  console.log(`got the lat, its ${lat}`)
   const longitude = pos.coords.longitude;
   lat.setAttribute("value", `${latitude}`);
+  console.log(`changed the lat, its ${lat}`)
   lon.setAttribute("value", `${longitude}`);
-  console.log('Coordinates', latitude, longitude);
   eventForm.submit();
 };
-if (!!submitButton) {
+
+
 submitButton.addEventListener("click", (event) => {
-   event.preventDefault();
   navigator.geolocation.getCurrentPosition(geolocationSuccess);
 });
-};
