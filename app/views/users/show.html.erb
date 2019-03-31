@@ -1,6 +1,9 @@
  <%= render 'shared/navbar' %>
 
 
+
+
+
 <div
   id="map2"
   style="width: 100%;
@@ -9,7 +12,23 @@
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 >
 
+  <div class="follow-button">
+      <% if current_user.id != @user.id %>
+      <%# buttton to show follow %>
+      <% if current_user.following?(@user) %>
+        <h1><%= link_to "unfollow", unfollow_user_path(@user), method: 'delete'%></h1>
+        <% else %>
+         <h1><%= link_to "follow", follow_user_path(@user), method: 'post'%></h1>
+      <% end %>
+      <% else %>
+      <h1><%= link_to "Edit", edit_user_registration_path(current_user) %></h1>
+      <% end %>
+  </div>
+
+
 </div>
+
+
 
 <div class="event-box-container">
   <div class="user-info">

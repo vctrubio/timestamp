@@ -6,7 +6,7 @@ import { initMapbox2 } from './user_show_map';
 import {countDownTimer} from './count_down_time';
 initMapbox();
 initMapbox2();
-countDownTimer();
+
 
 
 // geolocation JS

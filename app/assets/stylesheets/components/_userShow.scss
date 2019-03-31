@@ -92,3 +92,33 @@ line-height: normal;
 
 }
 
+.follow-button {
+  background-color: $purple;
+  border-radius: 15px;
+  width: 10em;
+  height: 2em;
+  margin: 0px;
+  z-index: 10;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+
+
+ }
+
+
+.follow-button h1 {
+  font-size: 1.5em;
+  text-align: center;
+  color: $white;
+
+
+}
+
+.follow-button h1 a {
+  color: inherit;
+}
+
+.follow-button-container {
+
+}
