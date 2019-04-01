@@ -25,9 +25,6 @@ class User < ApplicationRecord
   include PgSearch
   pg_search_scope :user_search,
     against: [ :username, :name, :email ],
-    associated_against: {
-      events: [ :title ]
-    },
     using: {
       tsearch: { prefix: true }
     }
