@@ -5,8 +5,6 @@ import { initMapbox } from '../plugins/init_mapbox';
 
 initMapbox();
 
-
-
 // geolocation JS
 const lat = document.getElementById('lat')
 const lon = document.getElementById('lon')
