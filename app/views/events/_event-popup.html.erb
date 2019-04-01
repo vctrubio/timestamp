@@ -1,0 +1,15 @@
+<% @events.each do |event| %>
+  <div class="event-pop-ups">
+    <div id="<%= event.id %>">
+      <div  class="event-title">
+      <h1><%=event.title %></h1>
+      </div>
+            <%= cl_image_tag event.picture, :class => "event-picture" %>
+
+      <div class="event-description">
+      <h2 "><%= event.description %></h2>
+      </div>
+
+    </div>
+  </div>
+<% end %>

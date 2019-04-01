@@ -1,31 +1,32 @@
-<div class="container container-form">
+
+<div class="container container-form container-login">
   <div class="row">
     <div class="col-sm-12">
+    <%= cl_image_tag 'https://res.cloudinary.com/vvrruubb69e/image/upload/v1554142767/timestamplogo.png', class: 'image-logo'%>
 
-      <h2 class="form-title">Log in</h2>
 
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="form-inputs">
-          <%= f.input :email,
+        <div class="form-inputs form-inputs-login">
+          <%= f.input :email, label: false,
                       required: false,
                       autofocus: true,
                       input_html: { autocomplete: "email" },
                       placeholder: "victor@gmail.com" %>
-          <%= f.input :password,
+          <%= f.input :password, label: false,
                       required: false,
                       input_html: { autocomplete: "current-password" },
                       placeholder: "Write your password" %>
           <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
         </div>
 
-        <div class="form-actions">
+        <div class="form-actions form-actions-login">
           <%= f.button :submit, "Log in", class: "form-button" %>
         </div>
       <% end %>
 
     </div>
   </div>
-</div>
-      <div class="log-in text-center">
+      <div class="form-login text-center">
         <%= render "devise/shared/links" %>
       </div>
+</div>
