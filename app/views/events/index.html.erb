@@ -15,7 +15,6 @@
         </button>
       </div>
       <div class="modal-body">
-
         <div class="container container-form">
           <div class="row">
             <div class="col-sm-12">
@@ -30,8 +29,8 @@
                 required: true,
                 input_html: { autocomplete: "description" },
                 placeholder: "Description of your event"%>
-                    <%= f.input :latitude, as: :hidden, input_html: { id: 'lat', value: f.object.latitude || '12.4326'  } %>
-    <%= f.input :longitude, as: :hidden, input_html: { id: 'lon', value: f.object.longitude || '91.1332'    } %>
+                <%= f.input :latitude, as: :hidden, input_html: { id: 'lat', value: f.object.latitude } %>
+                <%= f.input :longitude, as: :hidden, input_html: { id: 'lon', value: f.object.longitude } %>
                 <%= f.input :end_time, collection: 1..24,
                 required: true,
                 input_html: { autocomplete: "" },
@@ -43,50 +42,19 @@
               <% end %>
               <button id='make-event' class="form-button">Create Event</button>
               </div>
-
             </div>
           </div>
         </div>
-
-
-
-
       </div>
     </div>
   </div>
-  </div>
-
-
-
-
-
-<!--         <%= simple_form_for(@event) do |f| %>
-        <%= f.label :title %>
-        <%= f.text_field :title  %>
-        <%= f.label :description %>
-        <%= f.text_field :description %>
-          <%= f.input :picture %>
-          <%= f.input :picture_cache, as: :hidden %>
-        <%= f.input :end_time, collection: 1..24 %>
-        <div class="form-actions">
-          <%= f.button :submit, "Create", class: "form-button" %>
-        </div>
-      <% end %> -->
-
-
-
-
-
-
-
+</div>
 <div
   id="map"
   style="width: 100%;
   height: 600px;"
   data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
->
-
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
 
 

@@ -1,9 +1,5 @@
  <%= render 'shared/navbar' %>
 
-
-
-
-
 <div
   id="map2"
   style="width: 100%;
@@ -11,7 +7,6 @@
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 >
-
   <div class="follow-button">
       <% if current_user.id != @user.id %>
       <%# buttton to show follow %>
@@ -24,21 +19,13 @@
       <h1><%= link_to "Edit", edit_user_registration_path(current_user) %></h1>
       <% end %>
   </div>
-
-
 </div>
-
-
-
 <div class="event-box-container">
   <div class="user-info">
     <div class="avatar-username">
       <%= cl_image_tag @user.profile_photo, height: 150, :class => "avatar-show" %>
-
       <h1><%= @user.username %></h1>
     </div>
-
-
     <div class="followers-following">
       <h2>  <%= link_to "Following", following_user_path(@user) %>  </h2>
 
@@ -48,9 +35,7 @@
       <h3 style="padding-left: 56px;"><%= @user.followers.count %></h3>
     </div>
   </div>
-
   <div class="splitter"></div>
-
 <div>
     <% @events.each do |event| %>
       <input type="hidden" value="<%= event.latitude %>" >
