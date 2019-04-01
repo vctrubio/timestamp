@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:show, :following, :followers, :follow, :unfollow]
+  before_action :find_user, only: [ :show, :following, :followers, :follow, :unfollow ]
 
   def index
     policy_scope(User)
@@ -11,7 +11,6 @@ class UsersController < ApplicationController
     else
       @users = []
     end
-
   end
 
   def show
@@ -21,7 +20,6 @@ class UsersController < ApplicationController
 
   def following
     authorize @user
-
     @following = @user.following
   end
 
@@ -47,6 +45,3 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 end
-
-
-

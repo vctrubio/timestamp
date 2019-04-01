@@ -1,49 +1,81 @@
  <%= render 'shared/navbar' %>
-<h1><%= @user.email %></h1>
-<h2> <%= cl_image_tag @user.profile_photo, height: 150 %></h2>
 
-<p>Following :<%= @user.following.count %></p>     <%= link_to "Following", following_user_path(@user) %>
-<p>Followers: <%= @user.followers.count %></p> <%= link_to "Followers", followers_user_path(@user) %>
-
-<br>
-
-
-<div>
-    <% if current_user.id != @user.id %>
-    <%# buttton to show follow %>
-    <% if current_user.following?(@user) %>
-      <%= link_to "unfollow", unfollow_user_path(@user), method: 'delete'%>
+<div
+  id="map2"
+  style="width: 100%;
+  height: 300px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+>
+  <div class="follow-button">
+      <% if current_user.id != @user.id %>
+      <%# buttton to show follow %>
+      <% if current_user.following?(@user) %>
+        <h1><%= link_to "unfollow", unfollow_user_path(@user), method: 'delete'%></h1>
+        <% else %>
+         <h1><%= link_to "follow", follow_user_path(@user), method: 'post'%></h1>
+      <% end %>
       <% else %>
-      <%= link_to "follow", follow_user_path(@user), method: 'post'%>
-    <% end %>
-    <% else %>
-    <%= link_to "Edit", edit_user_registration_path(current_user) %>
-  <% end %>
+      <h1><%= link_to "Edit", edit_user_registration_path(current_user) %></h1>
+      <% end %>
+  </div>
 </div>
+<div class="event-box-container">
+  <div class="user-info">
+    <div class="avatar-username">
+      <%= cl_image_tag @user.profile_photo, height: 150, :class => "avatar-show" %>
+      <h1><%= @user.username %></h1>
+    </div>
+    <div class="followers-following">
+      <h2>  <%= link_to "Following", following_user_path(@user) %>  </h2>
 
-
-
-<% @events.each do |event| %>
-  <% if event.end_time > Time.now %>
-    <ul>
-      <li><%= event.title %> |ending at:<%= event.end_time %></li>
-        <% if policy(event).destroy? %>
-           <li><%= link_to "delete", user_event_path(event.user_id, event.id), method: :delete %></li>
-           <li><%= link_to "end event", terminate_event_path(event.id), method: "patch" %></li>
-          <% end %>
-
-    </ul>
-    <% else %>
-      <ul>
-
-          <li><%= event.title %> <%= event.created_at %></li>
-             <% if policy(event).destroy?  %>
-               <%= link_to "delete", user_event_path(event.user_id, event.id), method: :delete %>
-            <% end %>
-          <li><%= link_to "Comments Section", event_comments_path(event)%></li>
-    </ul>
-  <% end %>
-<% end %>
-
-
-
+      <h2>  <%= link_to "Followers", followers_user_path(@user) %> </h2>
+      <br>
+      <h3 style="padding-left: 35px;" ><%= @user.following.count %></h3>
+      <h3 style="padding-left: 56px;"><%= @user.followers.count %></h3>
+    </div>
+  </div>
+  <div class="splitter"></div>
+<div>
+    <% @events.each do |event| %>
+      <input type="hidden" value="<%= event.latitude %>" >
+      <input type="hidden" value="<%= event.longitude %>">
+      <% if event.end_time > Time.now %>
+        <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-2" >
+            <div class="event-list " >
+              <div data-latitude="<%= event.latitude %>" data-longitude="<%= event.longitude.to_s %>" class="user-show-event-title" class="see-last-event"><h1><%= event.title %></h1></div>
+              <% seconds = ( Time.parse(event.end_time) - Time.now) %>
+              <div id="timer" class="user-show-event-end-time" data-end_time="<%= event.end_time %>"><h1 ><%= Time.at(seconds).utc.strftime("%H:%M:%S") %></h1></div>
+            </div>
+          </div>
+        </div>
+      <div class="row border-bottom">
+        <div class="col-sm-12 col-md-6 col-lg-2 ">
+          <div class="d-flex justify-content-between">
+          <%= link_to "delete", user_event_path(event.user_id, event.id), method: :delete, :class => "text-danger" %>
+          <%= link_to "active", terminate_event_path(event.id), method: "patch", :class => "text-success" %>
+          </div>
+        </div>
+      </div>
+      <% else %>
+          <div class="row">
+          <div class="col-sm-12 col-md-6 col-lg-2">
+            <div class="event-list ">
+              <div data-latitude="<%= event.latitude %>" data-longitude="<%= event.longitude %>" class="user-show-event-title" class="see-last-event"> <h1><%= event.title %> </h1></div>
+              <div class="user-show-event-end-time"><h1 id="user-show-counter"><%= event.end_time %></h1></div>
+            </div>
+          </div>
+        </div>
+      <div class="row border-bottom">
+        <div class="col-sm-12 col-md-6 col-lg-2 ">
+          <div class="d-flex justify-content-between">
+          <%= link_to "delete", user_event_path(event.user_id, event.id), method: :delete, :class => "text-danger" %>
+          <div class="text-secondary">ended</div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+    </div>
+</div>
