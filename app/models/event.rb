@@ -10,7 +10,7 @@ class Event < ApplicationRecord
   mount_uploader :picture, PhotoUploader
 
   include PgSearch
-  pg_search_scope :global_search,
+  pg_search_scope :event_search,
     against: [ :title, :description ],
     associated_against: {
       user: [ :username ]

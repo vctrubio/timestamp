@@ -1,10 +1,10 @@
 import "bootstrap";
 import 'mapbox-gl/dist/mapbox-gl.css';
-
+import {autocomplete} from '../plugins/userAutocomplete';
 import { initMapbox } from '../plugins/init_mapbox';
 
 initMapbox();
-
+autocomplete();
 
 
 // geolocation JS

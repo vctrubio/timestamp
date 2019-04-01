@@ -11,7 +11,20 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
   end
 
   def index
-    @events = policy_scope(Event)
+    @events = []
+    @users = []
+    if params[:query].present?
+      if params[:query][0].strip == "@"
+        params[:query].slice!(0)
+        @users = policy_scope(User.user_search(params[:query]))
+        params[:query] = "@#{params[:query]}"
+      else
+        @events = policy_scope(Event.event_search(params[:query]))
+      end
+    else
+      @events = policy_scope(Event)
+    end
+
     @markers = @events.map do |event|
       {
         title: event.title,
@@ -25,12 +38,6 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
         username: event.user.username,
         event_id: event.id
       }
-    end
-
-    if params[:query].present?
-      @events = Event.global_search(params[:query]).order(end_time: :asc)
-    else
-      @events = Event.order(end_time: :asc)
     end
 
     # must be able to make new comments in the show
