@@ -13,15 +13,24 @@
 }
 
 body .mapboxgl-user-location-dot {
-    background-image: url(image-path('logo.png'))!important;
-    background-size: cover;
-    background-position: center;
-    background-color: red;
-    background-repeat: no-repeat;
+  background-image: url(image-path('logomark.png'))!important;
+  background-size: cover;
+  background-position: center;
+  background-color: red;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  border: 2px solid $purple;
 }
 
 body .mapboxgl-user-location-dot::before {
-      background-color: $purple;
+  background-color: $purple;
+  width: 20px;
+  height: 20px;
+}
+
+body .mapboxgl-user-location-dot::after {
+  border: transparent;
 }
 
 .mapboxgl-ctrl-icon.mapboxgl-ctrl-geolocate.mapboxgl-ctrl-geolocate-active{
