@@ -26,7 +26,7 @@
                 input_html: { autocomplete: "title" },
                 placeholder: "Your event title" %>
                 <%= f.input :description,
-                required: true,
+                required: true, as: :numeric,
                 input_html: { autocomplete: "description" },
                 placeholder: "Description of your event"%>
                 <%= f.input :latitude, as: :hidden, input_html: { id: 'lat', value: f.object.latitude } %>

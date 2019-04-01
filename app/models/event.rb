@@ -6,7 +6,6 @@ class Event < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :title, presence: true
-
   mount_uploader :picture, PhotoUploader
 
   include PgSearch
