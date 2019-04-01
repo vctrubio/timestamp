@@ -5,18 +5,25 @@
   border-radius: 5px;
   padding: 10px 20px;
   width: 100%;
-  margin-top: 20px;
-
   &:focus {
     color: $white;
   }
 }
 
 // BACK BUTTON <
-.button-image-back {
-  color: $purple;
-  font-size: 20px;
-}
+  button.button-image-back {
+    background-color: transparent;
+    border: none;
+    position: relative;
+    right: 10px;
+    i{
+      color: $purple;
+    font-size: 20px;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
 
 // MARKER BUTTON
 .button-marker-map {

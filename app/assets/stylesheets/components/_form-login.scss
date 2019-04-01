@@ -1,0 +1,29 @@
+.container-login {
+  height: 100vh;
+  background-color: $purple;
+  .form-inputs-login{
+    margin-top: 150px;
+    input {
+      padding-left: 20px;
+    }
+  }
+  .form-login {
+    margin-top: 3em;
+    a{
+      margin-top: 2em;
+      color: $white;
+    }
+
+  }
+}
+
+.image-logo {
+  width: 80%;
+  margin: 90px auto 0px;
+  display: block;
+}
+
+label.form-check-label {
+  color: white;
+}
+
