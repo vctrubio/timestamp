@@ -1,5 +1,3 @@
- <%= render 'shared/navbar' %>
-
 <div
   id="map2"
   style="width: 100%;
@@ -7,6 +5,10 @@
   data-markers="<%= @markers.to_json %>"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 >
+
+  <%= link_to root_path, class: "button-image-back button-image-back--alt" do %>
+    <i class="fas fa-angle-left"></i>
+  <% end %>
   <div class="follow-button">
       <% if current_user.id != @user.id %>
       <%# buttton to show follow %>
@@ -53,7 +55,7 @@
       <div class="row border-bottom">
         <div class="col-sm-12 col-md-6 col-lg-2 ">
           <div class="d-flex justify-content-between">
-          <%= link_to "delete", user_event_path(event.user_id, event.id), method: :delete, :class => "text-danger" %>
+          <%= link_to "delete", user_event_path(event.user_id, event.id), method: :delete, class: "text-danger" %>
           <%= link_to "active", terminate_event_path(event.id), method: "patch", :class => "text-success" %>
           </div>
         </div>

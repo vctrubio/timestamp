@@ -1,6 +1,5 @@
 .event-box-container {
 padding: 0% 3%;
-
 }
 
 .comment-box {
@@ -49,22 +48,20 @@ padding: 0% 3%;
 .event-list {
 display: flex;
 justify-content: space-between;
-
 }
 
 .user-show-event-title {
     display: inline;
-
 }
 
 .user-show-event-title h1 {
-    display: inline;
-    color: gray;
-    font-family: Roboto;
-font-style: normal;
-font-weight: bold;
-font-size: 16px;
-line-height: normal;
+  display: inline;
+  color: gray;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: normal;
 }
 
 .user-show-event-end-time {
@@ -88,9 +85,6 @@ line-height: normal;
   height: 1px;
   background-color: gray;
 }
-.active-delete {
-
-}
 
 .follow-button {
   background-color: $purple;
@@ -102,8 +96,6 @@ line-height: normal;
   position: absolute;
   bottom: 10px;
   right: 10px;
-
-
  }
 
 
@@ -111,14 +103,15 @@ line-height: normal;
   font-size: 1.5em;
   text-align: center;
   color: $white;
-
-
 }
 
 .follow-button h1 a {
   color: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
 }
 
-.follow-button-container {
-
+.text-danger{
+  font-size: 12px;
 }

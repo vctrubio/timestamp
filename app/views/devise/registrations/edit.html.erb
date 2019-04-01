@@ -1,7 +1,8 @@
-
-
-<%= link_to "Back", :back %>
-
+<div class="container">
+  <%= link_to :back do %>
+    <button class="button-image-back"><i class="fas fa-angle-left"></i></button>
+  <% end %>
+</div>
 
   <div class="container container-form ">
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -13,10 +14,10 @@
 
           <div class="row">
             <div class="col-2 text-center">
-                         
+
               <div class="padding-top">
 
-          
+
                 <%# <input class="form-control-file is-valid file optional" type="file" name="user[profile_photo]" id="user_profile_photo">  %>
               <%= f.input :profile_photo,
               label: (cl_image_tag current_user.profile_photo, class: "avatar") %>
@@ -34,7 +35,7 @@
     <br>
     <div class=" col-xs-2 col-lg-12">
 
-      
+
         <%= f.input :password,
                     hint: "leave it blank if you don't want to change it",
                     required: false,
@@ -43,26 +44,26 @@
                     required: false,
                     input_html: { autocomplete: "new-password" } %>
       </div>
- 
+
 
     <br>
 
 
       <div class="col-lg-12">
-      
+
       <%= f.input :current_password,
                   required: true,
-                  hint: "Lastly, current-password and click update!" %> 
+                  hint: "Lastly, current-password and click update!" %>
       </div>
-  
-       
+
+
        <%# .submit-button %>
-            <div class="form-action-edit text-center">  
+            <div class="form-action-edit text-center">
             <%= f.button :submit, "Update Profile" %>
             <% end %>
       </div>
   </div>
- 
+
   <br>
 
   <div class="background-test">

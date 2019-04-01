@@ -1,4 +1,4 @@
-e// FORM BUTTON
+// FORM BUTTON
 .form-button {
   background-color: $orange;
   color: $white;
@@ -11,7 +11,7 @@ e// FORM BUTTON
 }
 
 // BACK BUTTON <
-  button.button-image-back {
+  .button-image-back {
     background-color: transparent;
     border: none;
     position: relative;
@@ -22,6 +22,13 @@ e// FORM BUTTON
     }
     &:focus {
       outline: none;
+    }
+    &--alt{
+      right: auto;
+      left: 20px;
+      position: absolute;
+      top: 20px;
+      z-index: 3;
     }
   }
 
