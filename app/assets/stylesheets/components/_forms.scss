@@ -20,6 +20,7 @@
 
 .container-form {
   padding: 0px 25px;
+  max-width: 400px;
 }
 
 label {
@@ -65,4 +66,12 @@ label {
   margin-right: 10px;
   padding-top: 3px;
 }
+
+#make-event {
+  border: none;
+}
+  .form-button:focus {
+    outline: none;
+  }
+
 

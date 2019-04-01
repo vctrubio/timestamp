@@ -1,0 +1,39 @@
+
+.background-form{
+    background-color: #E5E5E5;
+}
+
+.border-edit {
+    border: 2px dotted;
+}
+
+.opacity-form {
+    background-color:  rgba(255, 255, 255, .5);
+}
+
+
+.padding-top {
+    padding-top: 21px;
+    padding-left: 8px;
+}
+
+.padding-sides {
+    padding: 0, 5px, 0, 5px;
+}
+
+#strong {
+    font-weight: bold;
+}
+ 
+#current-user-name{
+    color: $purple;
+
+}
+
+.form-action-edit .btn:hover{
+    color: $purple !important;
+    font-weight: bold;
+
+}
+
+

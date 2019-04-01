@@ -1,0 +1,21 @@
+.event-picture {
+  max-width: 80%;
+  max-height: 80%;
+  margin: 3% 0;
+}
+
+.mapboxgl-popup {
+max-width: 80%;
+max-height: 100px;
+display: flex;
+display: inline-block;
+text-align: center;
+}
+
+.event-title h1 {
+  font-size: 5vw;
+}
+
+.event-description  h2 {
+ font-size: 4vw;
+}
