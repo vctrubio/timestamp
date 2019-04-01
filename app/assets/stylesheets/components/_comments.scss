@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: $white;
+  background-color: $bg-comment;
   padding: 15px 10px 10px 10px;
   h3 {
     color: $purple;
@@ -30,9 +30,15 @@
   margin: 0px 10px;
     #comment_content{
     flex-grow: 1;
+    &::placeholder {
+      font-size: 14px;
+    }
     }
     .submit-button{
       flex-basis: 20%;
+    }
+    input {
+      padding-left: 10px;
     }
 }
 
@@ -42,7 +48,7 @@ ul {
 
 
 .comments {
-  margin-top: 70px;
+  margin-top: 80px;
   margin-bottom: 55px;
 }
 
@@ -72,7 +78,7 @@ li.comentario {
 }
 
 .background-user {
-  background-color: $white;
+  background-color: $bg-comment;
   padding: 5px 10px;
   display: flex;
   height: 50px;
