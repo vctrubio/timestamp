@@ -1,39 +1,75 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
-
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-
-  <%= f.input :profile_photo %>
-  <%= f.input :profile_photo_cache, as: :hidden %>
-  <%# i think it has to be :profile_photo %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+
+
+  <div class="container container-form ">
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs ">
+      <h2 class="text-center" id="current-user-name"><%= current_user.username.humanize %></h2>
+      <br>
+
+          <div class="row">
+            <div class="col-2 text-center">
+                         
+              <div class="padding-top">
+
+          
+                <%# <input class="form-control-file is-valid file optional" type="file" name="user[profile_photo]" id="user_profile_photo">  %>
+              <%= f.input :profile_photo,
+              label: (cl_image_tag current_user.profile_photo, class: "avatar") %>
+               </div>
+
+
+            </div>
+            <div class="col-9">
+              <%= f.input :username,
+                        hint: "change your username & profile picture",
+                        required: false,
+                        input_html: { autocomplete: "must be unique" } %>
+            </div>
+        </div>
+    <br>
+    <div class=" col-xs-2 col-lg-12">
+
+      
+        <%= f.input :password,
+                    hint: "leave it blank if you don't want to change it",
+                    required: false,
+                    input_html: { autocomplete: "new-password" } %>
+        <%= f.input :password_confirmation,
+                    required: false,
+                    input_html: { autocomplete: "new-password" } %>
+      </div>
+ 
+
+    <br>
+
+
+      <div class="col-lg-12">
+      
+      <%= f.input :current_password,
+                  required: true,
+                  hint: "Lastly, current-password and click update!" %> 
+      </div>
+  
+       
+       <%# .submit-button %>
+            <div class="form-action-edit text-center">  
+            <%= f.button :submit, "Update Profile" %>
+            <% end %>
+      </div>
+  </div>
+ 
+  <br>
+
+  <div class="background-test">
+      <p>Not happy with Timestamp?</p>
+      <p><%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+  </div>
+ </div>
+
+
+

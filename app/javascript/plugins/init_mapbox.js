@@ -20,13 +20,7 @@ import mapboxgl from 'mapbox-gl';
         .setPopup(new mapboxgl.Popup({ offset: 25 })
         .setHTML(
 
-        `<a href="/users/${marker.user_id}">${marker.username}</a>
-        <br>
-        <h3>${marker.title}</h3>
-        <br>
-        <p>${marker.description}</p>
-        <br>
-        <a href="/events/${marker.event_id}/comments">COMMENTS</a>`
+        `<div data-id="${marker.event_id}">test</div>`
         ))
         .addTo(map);
       }
@@ -56,3 +50,7 @@ import mapboxgl from 'mapbox-gl';
   }
 
 export { initMapbox };
+
+
+
+
