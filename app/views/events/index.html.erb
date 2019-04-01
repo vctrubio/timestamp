@@ -9,7 +9,7 @@
   <div class="modal-dialog slideInUp animated" role="document">
     <div class="modal-content css-modal-content">
       <div class="modal-header">
-        <h5 class="modal-title event-title" id="exampleModalLabel">Event</h5>
+        <h5 class="modal-title event-title" id="exampleModalLabel">Create an event</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -31,10 +31,10 @@
                 placeholder: "Description of your event"%>
                 <%= f.input :latitude, as: :hidden, input_html: { id: 'lat', value: f.object.latitude } %>
                 <%= f.input :longitude, as: :hidden, input_html: { id: 'lon', value: f.object.longitude } %>
-                <%= f.input :end_time, collection: 1..24,
+                <%= f.input :end_time, label: 'Duration of event',
                 required: true,
                 input_html: { autocomplete: "" },
-                placeholder: "Timestamp expiration" %>
+                placeholder: "From 1hr to 24 hrs", as: :numeric%>
                 <%= f.input :picture, as: :file, label: "Upload photo"%>
                 <%= f.input :picture_cache, as: :hidden %>
               </div>
@@ -59,3 +59,6 @@
 
 
 
+<div style="display: none;">
+  <%= render 'event-popup' %>
+</div>

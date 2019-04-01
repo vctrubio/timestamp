@@ -36,7 +36,9 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
         end_time: event.end_time,
         user_id: event.user_id,
         username: event.user.username,
-        event_id: event.id
+        event_id: event.id,
+        user_avatar: event.user.profile_photo.url,
+        current_user: current_user.id
       }
     end
 
@@ -70,7 +72,7 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
     @event.start_time = @start_time
 
     # Get the end time from user or assign default
-    if  params["event"]["end_time"].empty?
+    if params["event"]["end_time"].empty?
       @end_time_variable = @start_time + 86400
     else
       @end_time_variable = @start_time + (params["event"]["end_time"].to_i * 3600)
