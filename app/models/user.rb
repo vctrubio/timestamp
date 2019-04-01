@@ -1,19 +1,14 @@
 class User < ApplicationRecord
+  validates :email, presence: true, uniqueness: true
+  validates :username, presence: true, uniqueness: true, length: { in: 5..15 }
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-
-  mount_uploader :profile_photo, PhotoUploader
-
-
-  has_many :events
-  has_many :comments, dependent: :destroy #, through: :events
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   has_many :events
-  has_many :comments
-
+  has_many :comments, dependent: :destroy #, through: :events
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
                                   dependent:   :destroy
@@ -22,6 +17,10 @@ class User < ApplicationRecord
                                    foreign_key: "followed_id",
                                    dependent:   :destroy
 
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships
+
+  mount_uploader :profile_photo, PhotoUploader
 
   include PgSearch
   pg_search_scope :user_search,
@@ -32,21 +31,6 @@ class User < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
-  # ^
-  # active_relationship.follower => Returns the follower
-  # active_relationship.followed => Returns the followed user
-  # user.active_relationships.create(followed_id: other_user.id) => Creates an active relationship associated with user
-  # user.active_relationships.create!(followed_id: other_user.id) => Creates an active relationship associated with user (exception on failure)
-  # user.active_relationships.build(followed_id: other_user.id) => Returns a new Relationship object associated with user
-
-  has_many :following, through: :active_relationships, source: :followed
-  has_many :followers, through: :passive_relationships
-  # ^
-  # user.following.include?(other_user)
-  # user.following.find(other_user)
-  # user.following << other_user
-  # user.following.delete(other_user)
-
 
   # Follows a user.
   def follow(other_user)
