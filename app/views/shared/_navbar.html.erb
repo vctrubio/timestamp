@@ -9,7 +9,7 @@
           <%= cl_image_tag current_user.profile_photo, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
 
-            <%= link_to "Settings", user_path(current_user), class: "dropdown-item" %>
+            <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
 
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
@@ -26,8 +26,8 @@
       <%= form_tag events_path, method: :get do %>
         <%= text_field_tag :query,
         params[:query],
-          placeholder: "SEARCH EVENT OR @USER" %>
-          <i class="fas fa-search-location lupa"></i>
+          placeholder: "SEARCH @USER OR EVENT" %>
+          <i class="fas fa-search lupa"></i>
       <% end %>
 
         <div class="users" style="position: absolute; top: 60px; z-index: 9999999999999">
