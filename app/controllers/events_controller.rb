@@ -11,7 +11,20 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
   end
 
   def index
-    @events = policy_scope(Event)
+    @events = []
+    @users = []
+    if params[:query].present?
+      if params[:query][0].strip == "@"
+        params[:query].slice!(0)
+        @users = policy_scope(User.user_search(params[:query]))
+        params[:query] = "@#{params[:query]}"
+      else
+        @events = policy_scope(Event.event_search(params[:query]))
+      end
+    else
+      @events = policy_scope(Event)
+    end
+
     @markers = @events.map do |event|
       {
         title: event.title,
@@ -23,14 +36,10 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
         end_time: event.end_time,
         user_id: event.user_id,
         username: event.user.username,
-        event_id: event.id
+        event_id: event.id,
+        user_avatar: event.user.profile_photo.url,
+        current_user: current_user.id
       }
-    end
-
-    if params[:query].present?
-      @events = Event.global_search(params[:query]).order(end_time: :asc)
-    else
-      @events = Event.order(end_time: :asc)
     end
 
     # must be able to make new comments in the show
@@ -63,7 +72,7 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
     @event.start_time = @start_time
 
     # Get the end time from user or assign default
-    if  params["event"]["end_time"].empty?
+    if params["event"]["end_time"].empty?
       @end_time_variable = @start_time + 86400
     else
       @end_time_variable = @start_time + (params["event"]["end_time"].to_i * 3600)

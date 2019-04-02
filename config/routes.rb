@@ -19,6 +19,11 @@ Rails.application.routes.draw do
     resources :comments, shallow: true
   end
 
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :users, only: [ :index ]
+    end
+  end
 
   root to: 'events#index'
 end

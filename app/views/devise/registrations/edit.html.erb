@@ -1,8 +1,7 @@
-<div class="container">
-  <%= link_to :back do %>
-    <button class="button-image-back"><i class="fas fa-angle-left"></i></button>
-  <% end %>
-</div>
+<%= link_to :back do %>
+  <button class="button-image-back button-image-back-alt"><i class="fas fa-angle-left"></i></button>
+<% end %>
+
 
   <div class="container container-form ">
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>

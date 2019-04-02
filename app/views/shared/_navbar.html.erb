@@ -22,12 +22,18 @@
     </ul>
   </div>
 
-   <% if user_signed_in? %>
+  <% if user_signed_in? %>
       <%= form_tag events_path, method: :get do %>
         <%= text_field_tag :query,
         params[:query],
-          placeholder: "SEARCH USER OR EVENT" %>
+          placeholder: "SEARCH @USER OR EVENT" %>
           <i class="fas fa-search lupa"></i>
       <% end %>
-    <% end %>
+
+        <div class="users" style="position: absolute; top: 60px; z-index: 9999999999999">
+          <ul class="list-group" id="api-results">
+
+          </ul>
+        </div>
+  <% end %>
 </div>

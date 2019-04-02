@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
-  validates :username, presence: true, uniqueness: true, length: { in: 5..15 }
+  validates :username, presence: true, uniqueness: true, length: { in: 1..15 }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -25,9 +25,6 @@ class User < ApplicationRecord
   include PgSearch
   pg_search_scope :user_search,
     against: [ :username, :name, :email ],
-    associated_against: {
-      events: [ :title ]
-    },
     using: {
       tsearch: { prefix: true }
     }
