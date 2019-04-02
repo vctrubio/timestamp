@@ -1,5 +1,6 @@
 const popUp = () => {
-  document.addEventListener('click', (event) => {
+  let markerz = document.getElementsByClassName('mapboxgl-marker')[0]
+  markerz.addEventListener('click', (event) => {
   let popUps = document.getElementsByClassName('mapboxgl-popup-content')[0].lastChild
   let popUpId = popUps.dataset.id
   let eventPopUps = document.getElementById(`${popUpId}`)
