@@ -1,21 +1,64 @@
 .event-picture {
-  max-width: 80%;
-  max-height: 80%;
-  margin: 3% 0;
+  max-width: 29vw;
+  min-height: 50vw;
+  margin: 3%, 2%;
+  border-radius: 5px;
 }
 
 .mapboxgl-popup {
 max-width: 80%;
-max-height: 100px;
-display: flex;
-display: inline-block;
-text-align: center;
+min-width: 80%;
+max-height: 90%;
+word-break: break-all;
 }
 
-.event-title h1 {
-  font-size: 5vw;
+.event-info {
+   position: relative;
 }
 
-.event-description  h2 {
+.event-info h1 {
+  font-size: 4vw;
+  color: $purple;
+  margin-bottom: 0px;
+  margin-left: 2vw;
+
+}
+
+.event-info  h2 {
  font-size: 4vw;
+ font-weight: lighter;
+ color: gray;
+ margin-left: 2vw;
+
+}
+
+.event-info h3 {
+    padding-top: 2%;
+font-size: 2vw;
+display: inline ;
+
+}
+
+.footerz {
+display: flex;
+justify-content: space-between;
+margin-left: 2vw;
+position: absolute;
+width: 80%;
+bottom: 0;
+
+}
+
+
+
+.flexor{
+  display: flex;
+
+}
+
+#orioboreo{
+  position: fixed !important;
+  top: 0;
+  padding-top: 10px;
+  z-index: 6;
 }

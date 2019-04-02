@@ -1,15 +1,31 @@
 <% @events.each do |event| %>
   <div class="event-pop-ups">
     <div id="<%= event.id %>">
-      <div  class="event-title">
-      <h1><%=event.title %></h1>
-      </div>
-            <%= cl_image_tag event.picture, :class => "event-picture" %>
+      <div class="flexor">
 
-      <div class="event-description">
-      <h2 "><%= event.description %></h2>
-      </div>
 
+        <div>
+          <%= cl_image_tag event.picture, :class => "event-picture" %>
+          <%= link_to user_path(event.user.id) do %>
+          <div id="orioboreo"><%= cl_image_tag event.user.profile_photo, :class => "avatar-small" %></div>
+          <% end %>
+        </div>
+        <div class="event-info">
+          <div>
+            <h1><%=event.title %></h1>
+          </div>
+            <h2 "><%= event.description %></h2>
+          <div class="footerz">
+            <%= link_to event_comments_path(event.id) do %>
+              <i class="far fa-comment"></i>
+            <% end %>
+
+
+
+          <div class="count-down"><h3>23:23</h3></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>
