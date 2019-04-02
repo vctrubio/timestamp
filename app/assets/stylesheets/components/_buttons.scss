@@ -53,3 +53,22 @@
     font-size: 40px;
   }
 }
+
+// USER FOLLOW/EDIT BUTTON
+.follow-button {
+  background-color: $purple;
+  border-radius: 16px;
+  padding: 5px 30px;
+  color: $white;
+  z-index: 10;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 14px;
+  &:active, &:hover{
+  color: $white;
+  text-decoration: none;
+  }
+}
+
+

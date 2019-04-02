@@ -50,6 +50,7 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
 
   def show
     authorize @event
+        @events = Event.order(end_time :asc)
   end
 
   def destroy
