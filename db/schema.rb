@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_01_161558) do
+ActiveRecord::Schema.define(version: 2019_04_02_172014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2019_04_01_161558) do
     t.string "description"
     t.datetime "start_time"
     t.string "end_time"
-    t.string "picture"
+    t.string "picture", default: "https://res.cloudinary.com/vvrruubb69e/image/upload/v1554225663/product-default.jpg"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
