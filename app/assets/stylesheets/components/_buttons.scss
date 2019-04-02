@@ -11,7 +11,7 @@
 }
 
 // BACK BUTTON <
-  button.button-image-back {
+  .button-image-back {
     background-color: transparent;
     border: none;
     position: relative;
@@ -54,11 +54,27 @@
   }
 }
 
+// USER FOLLOW/EDIT BUTTON
+.follow-button {
+  background-color: $purple;
+  border-radius: 16px;
+  padding: 5px 30px;
+  color: $white;
+  z-index: 10;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 14px;
+  &:active, &:hover{
+  color: $white;
+  text-decoration: none;
+  }
+}
+
 .follow-color-arrow {
   color: $purple;
   opacity: 0.4;
 }
-
 
 .followers-color-arrow {
   color: $purple;

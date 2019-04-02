@@ -1,83 +1,88 @@
+<div
+id="map2"
+style="width: 100%;
+height: 60vh;"
+data-markers="<%= @markers.to_json %>"
+data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+>
 <%= link_to root_path do %>
-  <button class="button-image-back button-image-back-alt"><i class="fas fa-angle-left"></i></button>
+<button class="button-image-back button-image-back-alt"><i class="fas fa-angle-left"></i></button>
 <% end %>
 
-<div
-  id="map2"
-  style="width: 100%;
-  height: 300px;"
-  data-markers="<%= @markers.to_json %>"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
->
-  <div class="follow-button">
-      <% if current_user.id != @user.id %>
-      <%# buttton to show follow %>
-      <% if current_user.following?(@user) %>
-        <h1><%= link_to "unfollow", unfollow_user_path(@user), method: 'delete'%></h1>
-        <% else %>
-         <h1><%= link_to "follow", follow_user_path(@user), method: 'post'%></h1>
-      <% end %>
-      <% else %>
-      <h1><%= link_to "Edit", edit_user_registration_path(current_user) %></h1>
-      <% end %>
-  </div>
+
+<% if current_user.id != @user.id %>
+<% if current_user.following?(@user) %>
+<%= link_to "Unfollow", unfollow_user_path(@user), method: 'delete', class: "follow-button"%>
+<% else %>
+<%= link_to "Follow", follow_user_path(@user), method: 'post', class: "follow-button"%>
+<% end %>
+<% else %>
+<%= link_to "Edit", edit_user_registration_path(current_user), class: "follow-button" %>
+<% end %>
+
 </div>
-<div class="event-box-container">
+<div class="container">
   <div class="user-info">
-    <div class="avatar-username">
-      <%= cl_image_tag @user.profile_photo, height: 150, :class => "avatar-show" %>
+    <div class="photo-username">
+      <%= cl_image_tag @user.profile_photo, height: 150, class: "avatar-show" %>
       <h1><%= @user.username %></h1>
     </div>
     <div class="followers-following">
-      <h2>  <%= link_to "Following", following_user_path(@user) %>  </h2>
-
-      <h2>  <%= link_to "Followers", followers_user_path(@user) %> </h2>
-      <br>
-      <h3 style="padding-left: 35px;" ><%= @user.following.count %></h3>
-      <h3 style="padding-left: 56px;"><%= @user.followers.count %></h3>
+      <div class="following">
+        <p class="follow-heading"><%= link_to "Following", following_user_path(@user)%></p>
+        <span><%= @user.following.count %></span>
+      </div>
+      <div>
+        <p class="follow-heading"><%= link_to "Followers", followers_user_path(@user)%></p>
+        <span><%= @user.followers.count %></span>
+      </div>
     </div>
   </div>
-  <div class="splitter"></div>
-<div>
+  <div class="scroll-">
+
     <% @events.each do |event| %>
       <input type="hidden" value="<%= event.latitude %>" >
       <input type="hidden" value="<%= event.longitude %>">
       <% if event.end_time > Time.now %>
         <div class="row">
           <div class="col-sm-12 col-md-6 col-lg-2" >
-            <div class="event-list " >
-              <div data-latitude="<%= event.latitude %>" data-longitude="<%= event.longitude.to_s %>" class="user-show-event-title" class="see-last-event"><h1><%= event.title %></h1></div>
-              <% seconds = ( Time.parse(event.end_time) - Time.now) %>
-              <div id="timer" class="user-show-event-end-time" data-end_time="<%= event.end_time %>"><h1 ><%= Time.at(seconds).utc.strftime("%H:%M:%S") %></h1></div>
+            <div class="event-list">
+              <h2 data-latitude="<%= event.latitude %>" data-longitude="<%= event.longitude.to_s %>" class="user-show-event-title see-last-event">
+                <%= event.title.capitalize %>
+                <small><%= link_to "active", terminate_event_path(event.id), method: "patch", class: "text-success" %></small>
+              </h2>
+
+              <div class="event-info">
+                <% seconds = ( Time.parse(event.end_time) - Time.now) %>
+                <span data-end_time="<%= event.end_time %>" class="ended-time-js">
+                  <%= Time.at(seconds).utc.strftime("%H:%M:%S") %>
+                </span>
+                <%= link_to user_event_path(event.user_id, event.id), method: :delete do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
-      <div class="row border-bottom">
-        <div class="col-sm-12 col-md-6 col-lg-2 ">
-          <div class="d-flex justify-content-between">
-          <%= link_to "delete", user_event_path(event.user_id, event.id), method: :delete, :class => "text-danger" %>
-          <%= link_to "active", terminate_event_path(event.id), method: "patch", :class => "text-success" %>
-          </div>
-        </div>
-      </div>
       <% else %>
-          <div class="row">
+        <div class="row">
           <div class="col-sm-12 col-md-6 col-lg-2">
             <div class="event-list ">
-              <div data-latitude="<%= event.latitude %>" data-longitude="<%= event.longitude %>" class="user-show-event-title" class="see-last-event"> <h1><%= event.title %> </h1></div>
-              <div class="user-show-event-end-time"><h1 id="user-show-counter"><%= event.end_time %></h1></div>
+              <h2 data-latitude="<%= event.latitude %>" data-longitude="<%= event.longitude %>" class="user-show-event-title" class="see-last-event">
+                <%= event.title.capitalize %>
+                <small class="text-secondary">Ended</small>
+              </h2>
+              <div class="event-info">
+                   <span class="ended-time" data-ended_time="<%= event.end_time %>"><%= event.end_time %></span>
+                <%= link_to user_event_path(event.user_id, event.id), method: :delete do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
             </div>
+            </div>
+
           </div>
         </div>
-      <div class="row border-bottom">
-        <div class="col-sm-12 col-md-6 col-lg-2 ">
-          <div class="d-flex justify-content-between">
-          <%= link_to "delete", user_event_path(event.user_id, event.id), method: :delete, :class => "text-danger" %>
-          <div class="text-secondary">ended</div>
-          </div>
-        </div>
-      </div>
       <% end %>
     <% end %>
-    </div>
+  </div>
 </div>
