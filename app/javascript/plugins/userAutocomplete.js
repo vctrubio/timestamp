@@ -2,7 +2,8 @@ export const autocomplete = () => {
   const inputText = document.getElementById('query');
   const results = document.getElementById('api-results');
 
-  inputText.addEventListener('input', (event) => {
+  if (inputText) {
+    inputText.addEventListener('input', (event) => {
     fetch(`/api/v1/users?query=${inputText.value}`)
     .then(response => response.json())
     .then((data) => {
@@ -14,6 +15,7 @@ export const autocomplete = () => {
       });
     });
   });
+  }
 
 }
 
