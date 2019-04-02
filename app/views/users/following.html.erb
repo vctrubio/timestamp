@@ -20,12 +20,14 @@
         
        <div>
             <% if current_user.following?(f) %>
-                <h1 class="btn btn-light"><%= link_to "unfollow", unfollow_user_path(f.id), method: 'delete'%></h1>
+                <h1 class="btn btn-light" id="unfollowbttn" ><%= link_to "Unfollow", unfollow_user_path(f.id), method: 'delete', remote: true%></h1>
             <% else %>
-                <h1 class="btn btn-dark"><%= link_to "follow", follow_user_path(f.id), method: 'post'%></h1>
+                <h1 class="btn btn-dark" id="followbttn"><%= link_to "Follow", follow_user_path(f.id), method: 'post', remote: true%></h1>
              <% end %>
         </div>
 
      </div>
     <% end %>
 </div>
+
+
