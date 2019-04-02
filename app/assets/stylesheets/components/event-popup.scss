@@ -1,7 +1,8 @@
 .event-picture {
-  max-width: 29vw;
-  min-height: 50vw;
-  margin: 3%, 2%;
+  width: 100px;
+  height: 165px;
+  background-size: cover;
+  background-position: center;
   border-radius: 5px;
 }
 
@@ -14,12 +15,13 @@ word-break: break-all;
 
 .event-info {
    position: relative;
+   padding: 5px;
 }
 
 .event-info h1 {
   font-size: 4vw;
   color: $purple;
-  margin-bottom: 0px;
+  margin-bottom: 1px;
   margin-left: 2vw;
 
 }
@@ -61,4 +63,22 @@ bottom: 0;
   top: 0;
   padding-top: 10px;
   z-index: 6;
+}
+
+.comment-count {
+  display: inline;
+  color: black;
+}
+
+.count-down-inject-me {
+  color: $orange;
+}
+
+.count-down-inject-me h3 {
+  color: $orange;
+  font-size: 12px;
+}
+
+.fa-comment {
+  color: $purple;
 }
