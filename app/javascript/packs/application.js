@@ -6,12 +6,10 @@ import { initMapbox2 } from './user_show_map';
 import { popUp } from './event_popup';
 import {countDownTimer} from './count_down_time';
 
-
 initMapbox();
 initMapbox2();
 autocomplete();
 popUp();
-
 
 // geolocation JS
 const lat = document.getElementById('lat')
