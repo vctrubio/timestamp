@@ -39,7 +39,6 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     </div>
   </div>
   <div class="scroll-">
-
     <% @events.each do |event| %>
       <input type="hidden" value="<%= event.latitude %>" >
       <input type="hidden" value="<%= event.longitude %>">
