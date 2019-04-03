@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root to: 'events#index'
 
-  devise_for :users
+  devise_for :users,
+    controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
     resources :users do
       member do
         get :following, :followers
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :users, only: [ :index ]
+      resources :events, only: [ :index ]
     end
   end
 

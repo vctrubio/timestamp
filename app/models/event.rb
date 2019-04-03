@@ -6,9 +6,17 @@ class Event < ApplicationRecord
   validates :title, presence: true
   mount_uploader :picture, PhotoUploader
 
+  def active?
+    self.end_time ? Date.today < self.end_time : false
+  end
+
+  def mine?(user)
+    self.user.id == user.id
+  end
+
   include PgSearch
   pg_search_scope :event_search,
-    against: [ :title, :description ],
+    against: [:title],
     associated_against: {
       user: [:username]
     },

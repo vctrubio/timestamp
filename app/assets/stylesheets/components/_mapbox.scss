@@ -13,10 +13,9 @@
 }
 
 body .mapboxgl-user-location-dot {
-  background-image: url(image-path('logomark.png'))!important;
-  background-size: cover;
+  //background-size: cover;
   background-position: center;
-  background-color: red;
+  background-color: $purple;
   width: 20px;
   height: 20px;
 }
@@ -28,7 +27,7 @@ body .mapboxgl-user-location-dot::before {
 }
 
 body .mapboxgl-user-location-dot::after {
-  border: transparent;
+  border: white;
 }
 
 .mapboxgl-ctrl-icon.mapboxgl-ctrl-geolocate.mapboxgl-ctrl-geolocate-active{
