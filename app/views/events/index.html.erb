@@ -34,7 +34,7 @@
                 <%= f.input :end_time, label: 'Duration of event',
                 required: true,
                 input_html: { autocomplete: "" },
-                placeholder: "From 1hr to 24 hrs", as: :numeric%>
+                placeholder: "From 1hr to 24 hrs", as: :select, collection: (1..24).map {|h| [h, "#{h} hours"]}, label_method: :second, value_method: :first%>
                 <%= f.input :picture, as: :file, label: "Upload photo"%>
                 <%= f.input :picture_cache, as: :hidden %>
               </div>

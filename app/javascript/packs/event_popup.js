@@ -5,13 +5,9 @@ const popUp = () => {
     let popUpId = popUps.dataset.id
     let eventPopUps = document.getElementById(`${popUpId}`)
     popUps.innerHTML = eventPopUps.innerHTML
-  }
-});
-
-
+    }
+  });
 }
-
-
 
 // export { popUp };
 

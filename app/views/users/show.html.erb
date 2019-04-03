@@ -8,13 +8,15 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 <%= link_to root_path do %>
 <button class="button-image-back button-image-back-alt"><i class="fas fa-angle-left"></i></button>
 <% end %>
-
-
 <% if current_user.id != @user.id %>
 <% if current_user.following?(@user) %>
-<%= link_to "Unfollow", unfollow_user_path(@user), method: 'delete', class: "follow-button"%>
+<div data-following="<%=@user.username%>">
+  <%= link_to "Unfollow", unfollow_user_path(@user), method: 'delete', class: "follow-button" , remote: true%>
+</div>
 <% else %>
-<%= link_to "Follow", follow_user_path(@user), method: 'post', class: "follow-button"%>
+<div data-following="<%=@user.username%>">
+<%= link_to "Follow", follow_user_path(@user), method: 'post', class: "follow-button", remote: true%>
+</div>
 <% end %>
 <% else %>
 <%= link_to "Edit", edit_user_registration_path(current_user), class: "follow-button" %>
@@ -39,7 +41,6 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     </div>
   </div>
   <div class="scroll-">
-
     <% @events.each do |event| %>
       <input type="hidden" value="<%= event.latitude %>" >
       <input type="hidden" value="<%= event.longitude %>">
@@ -56,9 +57,12 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
                 <span data-end_time="<%= event.end_time %>" class="ended-time-js">
                   <%= Time.at(seconds).utc.strftime("%H:%M:%S") %>
                 </span>
-                <%= link_to user_event_path(event.user_id, event.id), method: :delete do %>
+                <% if policy(event).destroy? %>
+                  <%= link_to user_event_path(event.user_id, event.id), method: :delete do %>
                   <i class="fas fa-trash-alt"></i>
                 <% end %>
+                <% end %>
+
               </div>
             </div>
           </div>
@@ -78,7 +82,6 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
                 <% end %>
             </div>
             </div>
-
           </div>
         </div>
       <% end %>

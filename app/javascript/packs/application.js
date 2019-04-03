@@ -4,12 +4,9 @@ import { autocomplete } from '../plugins/userAutocomplete';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initMapbox2 } from './user_show_map';
 
-
 initMapbox();
 initMapbox2();
 autocomplete();
-
-
 
 // geolocation JS
 const lat = document.getElementById('lat')
@@ -25,7 +22,8 @@ const geolocationSuccess = (pos) => {
   console.log('Coordinates', latitude, longitude);
   eventForm.submit();
 };
- if (!!submitButton) {
+
+if (!!submitButton) {
 submitButton.addEventListener("click", (event) => {
    event.preventDefault();
   navigator.geolocation.getCurrentPosition(geolocationSuccess);
