@@ -68,7 +68,6 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
     @event = Event.new(event_params)
     @event.user = current_user
     authorize @event
-
     @start_time = Time.now
     @event.start_time = @start_time
 
@@ -79,16 +78,14 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
       @end_time_variable = @start_time + (params["event"]["end_time"].to_i * 3600)
     end
 
-     @event.end_time = @end_time_variable
+    @event.end_time = @end_time_variable
 
-
-      if @event.save
+    if @event.save
         redirect_to root_path
-      else
+    else
         redirect_to root_path
         # render :index
-      end
-
+    end
   end
 
   def edit
