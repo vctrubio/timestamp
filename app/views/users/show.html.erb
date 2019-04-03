@@ -47,7 +47,7 @@
           <div class="col-sm-12 col-md-6 col-lg-2" >
             <div class="event-list " >
               <div data-latitude="<%= event.latitude %>" data-longitude="<%= event.longitude.to_s %>" class="user-show-event-title" class="see-last-event"><h1><%= event.title %></h1></div>
-              <% seconds = ( Time.parse(event.end_time) - Time.now) %>
+              <% seconds = ( event.end_time - Time.now) %>
               <div id="timer" class="user-show-event-end-time" data-end_time="<%= event.end_time %>"><h1 ><%= Time.at(seconds).utc.strftime("%H:%M:%S") %></h1></div>
             </div>
           </div>
