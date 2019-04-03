@@ -103,14 +103,10 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
     params.require(:event).permit(:title, :description, :end_time, :start_time, :picture, :latitude, :longitude)
   end
 
-
-
   def find_event
     @event = Event.find(params[:id])
     authorize @event
   end
-
-
 end
 
 
