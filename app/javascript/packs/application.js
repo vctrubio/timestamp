@@ -3,6 +3,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import { autocomplete } from '../plugins/userAutocomplete';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initMapbox2 } from './user_show_map';
+import '../plugins/eventSaveError';
 //import { popUp } from './event_popup';
 // import {countDownTimer} from './count_down_time';
 

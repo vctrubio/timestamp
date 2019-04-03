@@ -25,6 +25,8 @@
                 autofocus: true,
                 input_html: { autocomplete: "title" },
                 placeholder: "Your event title" %>
+                <div id="error">
+                </div>
                 <%= f.input :description,
                 required: true, as: :numeric,
                 input_html: { autocomplete: "description" },
