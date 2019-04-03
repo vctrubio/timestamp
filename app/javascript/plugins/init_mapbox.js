@@ -1,5 +1,4 @@
 import mapboxgl from 'mapbox-gl';
-
   const initMapbox = () => {
     const mapElement = document.getElementById('map');
 
@@ -28,7 +27,7 @@ import mapboxgl from 'mapbox-gl';
           .setPopup(new mapboxgl.Popup({ offset: 25 })
           .setHTML(
 
-        `<div data-id="${marker.event_id}">test</div>`
+        '<div data-id="${marker.event_id}"></div>'
         ))
         .addTo(map);
         }
@@ -37,7 +36,7 @@ import mapboxgl from 'mapbox-gl';
         const fitMapToMarkers = (map, markers) => {
           const bounds = new mapboxgl.LngLatBounds();
           markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-          map.fitBounds(bounds, { padding: 70, maxZoom: 13 });
+          map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
         };
         fitMapToMarkers(map, markers);
       }

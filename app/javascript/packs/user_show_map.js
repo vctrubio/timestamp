@@ -15,7 +15,7 @@ const initMapbox2 = () => {
         enableHighAccuracy: true
       },
       trackUserLocation: true
-    }))
+    }));
 
     const userMarkers = {lat: 0, lon: 0}
     document.addEventListener('click', (event) => {
@@ -31,10 +31,7 @@ const initMapbox2 = () => {
 
       } else {console.log(event.target.parentElement)}
 });
-
   }
-
-
 };
 
 export { initMapbox2 };
