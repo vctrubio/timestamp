@@ -11,6 +11,7 @@ initMapbox2();
 autocomplete();
 //popUp();
 
+
 // geolocation JS
 const lat = document.getElementById('lat')
 const lon = document.getElementById('lon')

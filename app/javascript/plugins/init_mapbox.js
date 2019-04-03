@@ -8,6 +8,7 @@ import mapboxgl from 'mapbox-gl';
       const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/komcath/cjti3v6am07fr1fo12f1oer72',
+        center: [-99.12766, 19.42847],
         zoom: 4
       });
       const render = mapElement.dataset.render;
@@ -42,7 +43,7 @@ import mapboxgl from 'mapbox-gl';
       }
       map.addControl(new mapboxgl.GeolocateControl({
         positionOptions: {
-          enableHighAccuracy: true
+        enableHighAccuracy: true
         },
         trackUserLocation: true
       }));
