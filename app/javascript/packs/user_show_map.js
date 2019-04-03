@@ -15,17 +15,13 @@ const initMapbox2 = () => {
         enableHighAccuracy: true
       },
       trackUserLocation: true
-    }))
+    }));
 
     const userMarkers = {lat: 0, lon: 0}
     document.addEventListener('click', (event) => {
       if (event.target.parentElement.className == "user-show-event-title") {
-        console.log(event.target.parentElement.className)
-        console.log(event.target.parentElement)
-        console.log(event.target.parentElement.dataset)
         userMarkers.lat = parseFloat(event.target.parentElement.dataset.latitude)
-        console.log(userMarkers.lat)
-         userMarkers.lon = parseFloat(event.target.parentElement.dataset.longitude)
+        userMarkers.lon = parseFloat(event.target.parentElement.dataset.longitude)
 
         if (userMarkers) {
           new mapboxgl.Marker()

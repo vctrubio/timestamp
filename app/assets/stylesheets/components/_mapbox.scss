@@ -13,22 +13,20 @@
 }
 
 body .mapboxgl-user-location-dot {
-  background-image: url(image-path('logomark.png'))!important;
   background-size: cover;
   background-position: center;
-  background-color: red;
-  width: 20px;
-  height: 20px;
+  background-color: $purple;
+  width: 15px;
+  height: 15px;
 }
 
 body .mapboxgl-user-location-dot::before {
   background-color: $purple;
-  width: 20px;
-  height: 20px;
-}
-
-body .mapboxgl-user-location-dot::after {
-  border: transparent;
+  width: 15px;
+  height: 15px;
+  &::after {
+    border: transparent;
+  }
 }
 
 .mapboxgl-ctrl-icon.mapboxgl-ctrl-geolocate.mapboxgl-ctrl-geolocate-active{
