@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @events = @user.events.order(end_time: :asc)
+    @events = @user.events.order(start_time: :desc)
     authorize @user
   end
 
