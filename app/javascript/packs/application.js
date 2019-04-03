@@ -13,7 +13,7 @@ autocomplete();
 popUp();
 
 
-geolocation JS
+// geolocation JS
 const lat = document.getElementById('lat')
 const lon = document.getElementById('lon')
 const submitButton = document.getElementById('make-event')
