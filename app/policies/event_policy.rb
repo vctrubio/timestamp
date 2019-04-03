@@ -6,7 +6,7 @@ class EventPolicy < ApplicationPolicy
       else
         scope.where.not(latitude: nil, longitude: nil).select do |e|
           (user.following?(e.user) || e.mine?(user)) && e.active?
-      end
+        end
       end
     end
   end
