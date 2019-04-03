@@ -26,9 +26,9 @@ const geolocationSuccess = (pos) => {
   console.log('Coordinates', latitude, longitude);
   eventForm.submit();
 };
-//if (!!submitButton) {
+if (!!submitButton) {
 submitButton.addEventListener("click", (event) => {
    event.preventDefault();
   navigator.geolocation.getCurrentPosition(geolocationSuccess);
 });
-//};
+};

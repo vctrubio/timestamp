@@ -1,7 +1,18 @@
-let btn = document.getElementById('unfollowbttn')
-btn.classList.remove('btn-light')
-btn.classList.add('btn-dark');
+var btn = document.querySelector("[data-following='<%= @user.username %>']")
+btn.innerHTML=('Unfollowed√');
 
-let btninnerHtml = document.querySelector('#unfollowbttn a')
 
-    btninnerHtml.innerHTML=("Follow");
+
+// btn.addEventListener('click', (e) => {
+//     if (btn.style.backgroundColor === "black") {
+//         btn.style.backgroundColor = "yellow";
+//       } else {
+//         btn.style.backgroundColor = "black";
+//       }
+//     });
+
+
+
+
+// let btninnerHtml = document.querySelector('#unfollowbttn a')
+
