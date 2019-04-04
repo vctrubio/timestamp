@@ -13,7 +13,7 @@
       </div>
       <div class="event-info">
         <div>
-          <h1><%=event.title %></h1>
+
         </div>
         <h2 "><%= event.description %></h2>
         <div class="footerz">
@@ -21,6 +21,7 @@
           <i class="far fa-comment"> <div class="comment-count"><%= event.comments.count %></div> </i>
           <% end %>
 
+          <div class="ended-time-js" data-end_time=" <%=event.end_time %> "><h3>23:23..</h3></div>
 
 
           <div class="count-down-inject-me"><h3>23:23..</h3></div>
