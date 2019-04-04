@@ -6,6 +6,8 @@
   padding: 15px 10px 10px 10px;
   h3 {
     color: $purple;
+    margin: 0px !important;
+    font-size: 22px;
   }
 }
 
@@ -86,6 +88,7 @@ li.comentario {
 
 .time-back {
   color: $orange;
+  font-size: 14px;
 }
 
 .time-ago {
