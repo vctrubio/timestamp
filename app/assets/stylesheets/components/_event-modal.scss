@@ -24,7 +24,9 @@
     color: #6922FF;
     flex-grow: 1;
 }
-
+#error {
+  color: red;
+}
 
 // ANIMATE
 @keyframes slideInUp {

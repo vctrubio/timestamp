@@ -25,6 +25,8 @@
                 autofocus: true,
                 input_html: { autocomplete: "title" },
                 placeholder: "Your event title" %>
+                <div id="error">
+                </div>
                 <%= f.input :description,
                 required: true,
                 input_html: { autocomplete: "description" },
@@ -62,3 +64,5 @@
 <div style="display: none;">
   <%= render 'event-popup' %>
 </div>
+
+<%= javascript_pack_tag 'event_popup' %>

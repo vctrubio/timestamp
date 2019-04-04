@@ -1,32 +1,32 @@
 <% @events.each do |event| %>
-  <div class="event-pop-ups">
-    <div id="<%= event.id %>">
-      <div class="flexor">
+<div class="event-pop-ups">
+  <div id="<%= event.id %>">
+    <div class="flexor">
 
 
-        <div>
-          <div class="event-picture" style="background-image: url(<%= event.picture %>)">
-          </div>
-          <%= link_to user_path(event.user.id) do %>
-          <div id="orioboreo"><%= cl_image_tag event.user.profile_photo, :class => "avatar-small" %></div>
-          <% end %>
+      <div>
+        <div class="event-picture" style="background-image: url(<%= event.picture %>)">
         </div>
-        <div class="event-info">
-          <div>
-            <h1><%=event.title %></h1>
-          </div>
-            <h2 "><%= event.description %></h2>
-          <div class="footerz">
-            <%= link_to event_comments_path(event.id) do %>
-              <i class="far fa-comment"> <div class="comment-count"><%= event.comments.count %></div> </i>
-            <% end %>
+        <%= link_to user_path(event.user.id) do %>
+        <div id="orioboreo"><%= cl_image_tag event.user.profile_photo, :class => "avatar-small" %></div>
+        <% end %>
+      </div>
+      <div class="event-info">
+        <div>
+          <h1><%=event.title %></h1>
+        </div>
+        <h2 "><%= event.description %></h2>
+        <div class="footerz">
+          <%= link_to event_comments_path(event.id) do %>
+          <i class="far fa-comment"> <div class="comment-count"><%= event.comments.count %></div> </i>
+          <% end %>
 
 
 
           <div class="count-down-inject-me"><h3>23:23..</h3></div>
-          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 <% end %>

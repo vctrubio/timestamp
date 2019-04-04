@@ -82,10 +82,7 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
 
     if @event.save
         redirect_to root_path
-    else
-        redirect_to root_path
-        # render :index
-    end
+     end
   end
 
   def edit
@@ -103,14 +100,8 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
     params.require(:event).permit(:title, :description, :end_time, :start_time, :picture, :latitude, :longitude)
   end
 
-
-
   def find_event
     @event = Event.find(params[:id])
     authorize @event
   end
-
-
 end
-
-
