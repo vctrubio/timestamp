@@ -6,8 +6,7 @@
           <button class="button-image-back"><i class="fas fa-angle-left"></i></button>
         <% end %>
         <h3><%= @event.title.capitalize %></h3>
-        <span class="time-back"><% seconds = ( Time.parse(@event.end_time) - Time.now) %>
-        <%= Time.at(seconds).utc.strftime("%H:%M:%S") %></span>
+        <span class="time-back ended-time-js"  data-end_time="<%= @event.end_time %> " ></span>
       </div>
       <div class="comments">
         <% @event.comments.each do |comment| %>

@@ -10,7 +10,7 @@ initMapbox();
 initMapbox2();
 autocomplete();
 setTimeout(() => popUp(), 1000);
-countDownTimer();
+setInterval(countDownTimer(), 1000);
 
 // geolocation JS
 const lat = document.getElementById('lat')

@@ -8,7 +8,7 @@
           <div class="event-picture" style="background-image: url(<%= event.picture %>)">
           </div>
           <%= link_to user_path(event.user.id) do %>
-          <div id="orioboreo"><%= cl_image_tag event.user.profile_photo, :class => "avatar-small" %></div>
+          <div id="orioboreo"><%= cl_image_tag event.user.profile_photo, :class => "avatar-small-popup" %></div>
           <% end %>
         </div>
         <div class="event-info">
@@ -23,7 +23,7 @@
 
 
 
-          <div class="count-down-inject-me"><h3>23:23..</h3></div>
+          <div class="ended-time-js" data-end_time=" <%=event.end_time %> "><h3>23:23..</h3></div>
           </div>
         </div>
       </div>
