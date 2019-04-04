@@ -32,7 +32,28 @@ const initMapbox2 = () => {
       .addTo(map);
   });
   fitMapToMarkers(map, markers);
+
+  const UserEventsArray = Array.from(document.getElementsByClassName('user-show-event-title'))
+  UserEventsArray.forEach((element) => {
+
+
+    element.addEventListener('click', (event) => {
+  // do something on click of an element
+  const latitude = event.target.dataset.latitude
+  const longitude = event.target.dataset.longitude
+    map.flyTo({
+    center: [longitude,latitude]
+    });
+  });
+   });
+
+
+
+
   };
+
+
+
 }
 
 
