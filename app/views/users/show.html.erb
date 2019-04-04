@@ -8,9 +8,9 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 <%= link_to root_path do %>
 <button class="button-image-back button-image-back-alt"><i class="fas fa-angle-left"></i></button>
 <% end %>
+<div class="position-fixed-bottom" data-following="<%=@user.username%>" id="follow-button">
 <% if current_user.id != @user.id %>
 <% if current_user.following?(@user) %>
-<div class="position-fixed-bottom" data-following="<%=@user.username%>">
   <%= render "shared/unfollow", follower: @user %>
   <% else %>
 <%= render "shared/follow", following: @user %>
@@ -30,11 +30,11 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
     <div class="followers-following">
       <div class="following">
         <p class="follow-heading"><%= link_to "Following", following_user_path(@user)%></p>
-        <span><%= @user.following.count %></span>
+        <span id="follower-count"><%= @user.following.count %></span>
       </div>
       <div>
         <p class="follow-heading"><%= link_to "Followers", followers_user_path(@user)%></p>
-        <span><%= @user.followers.count %></span>
+        <span id="followers-count"><%= @user.followers.count %></span>
       </div>
     </div>
   </div>
