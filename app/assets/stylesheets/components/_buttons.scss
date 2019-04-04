@@ -80,3 +80,16 @@
   color: $purple;
 }
 
+.fa-facebook {
+  font-size: 20px;
+  margin-bottom: 30px;
+
+  &:hover {
+    text-decoration: none;
+    opacity: 0.8;
+  }
+}
+  .fa-facebook:before {
+    padding-right: 10px;
+  }
+

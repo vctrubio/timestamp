@@ -69,12 +69,14 @@
 
 .text-success {
   font-size: 12px;
+   padding-right: 30px;
   &:active{
     text-decoration: none;
   }
 }
 .text-secondary {
   font-size: 12px;
+  padding-right: 30px;
 }
 
 .photo-username {
