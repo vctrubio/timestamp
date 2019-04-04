@@ -76,7 +76,7 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
               <div class="event-info">
                    <span class="ended-time" data-ended_time="<%= event.end_time %>"><%= event.end_time %></span>
                 <%= link_to user_event_path(event.user_id, event.id), method: :delete do %>
-                  <i class="fas fa-trash-alt" style="padding-left: 1px"></i>
+                  <i class="fas fa-trash-alt"></i>
                 <% end %>
             </div>
             </div>
