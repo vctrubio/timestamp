@@ -1,39 +1,33 @@
-
-.background-form{
-    background-color: #E5E5E5;
-}
-
-.border-edit {
-    border: 2px dotted;
-}
-
-.opacity-form {
-    background-color:  rgba(255, 255, 255, .5);
-}
-
-
-.padding-top {
-    padding-top: 21px;
-    padding-left: 8px;
-}
-
-.padding-sides {
-    padding: 0, 5px, 0, 5px;
-}
-
-#strong {
-    font-weight: bold;
-}
- 
-#current-user-name{
+.name-profile-photo {
+  display: flex;
+  margin-bottom: 10px;
+  align-items: center;
+  h2 {
+    padding-left: 20px;
     color: $purple;
-
+    font-size: 22px;
+  }
 }
 
-.form-action-edit .btn:hover{
-    color: $purple !important;
-    font-weight: bold;
-
+.edit-profile {
+  margin-top: 60px;
 }
 
+.margin-to-button {
+  margin: 15px 0;
+}
 
+.cancel-account {
+text-align: center;
+justify: center;
+  p{
+    font-size: 12px;
+    margin: 0 ;
+  }
+  span {
+    font-size: 12px;
+  }
+  a{
+    font-size: 12px;
+  }
+}

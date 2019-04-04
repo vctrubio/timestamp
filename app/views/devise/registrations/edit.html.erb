@@ -1,75 +1,55 @@
-<%= link_to :back do %>
-  <button class="button-image-back button-image-back-alt"><i class="fas fa-angle-left"></i></button>
+<%= link_to user_path(current_user) do %>
+<button class="button-image-back button-image-back-alt"><i class="fas fa-angle-left"></i></button>
 <% end %>
 
+<div class="container container-form">
+  <div class="row">
+    <div class="col-sm-12">
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
 
-  <div class="container container-form ">
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= f.error_notification %>
-
-    <div class="form-inputs ">
-      <h2 class="text-center" id="current-user-name"><%= current_user.username.humanize %></h2>
-      <br>
-
-          <div class="row">
-            <div class="col-2 text-center">
-
-              <div class="padding-top">
-
-
-                <%# <input class="form-control-file is-valid file optional" type="file" name="user[profile_photo]" id="user_profile_photo">  %>
-              <%= f.input :profile_photo,
-              label: (cl_image_tag current_user.profile_photo, class: "avatar") %>
-               </div>
-
-
-            </div>
-            <div class="col-9">
-              <%= f.input :username,
-                        hint: "change your username & profile picture",
-                        required: false,
-                        input_html: { autocomplete: "must be unique" } %>
-            </div>
+      <div class="form-inputs edit-profile">
+        <div class="name-profile-photo">
+          <%= f.input :profile_photo,
+          label: (cl_image_tag current_user.profile_photo, class: "avatar") %>
+          <h2 class="text-center" id="current-user-name"><%= current_user.username.humanize %></h2>
         </div>
-    <br>
-    <div class=" col-xs-2 col-lg-12">
+        <%= f.input :username,
+        hint: "change your username & profile picture",
+        required: false,
+        input_html: { autocomplete: "must be unique" } %>
+        <%= f.input :current_password,
 
-
-        <%= f.input :password,
-                    hint: "leave it blank if you don't want to change it",
-                    required: false,
-                    input_html: { autocomplete: "new-password" } %>
-        <%= f.input :password_confirmation,
-                    required: false,
-                    input_html: { autocomplete: "new-password" } %>
+        placeholder: "Old password" %>
+        <%= f.input :password, label: "New password",
+        hint: "leave it blank if you don't want to change it",
+        required: false,
+        input_html: { autocomplete: "new-password" },
+        placeholder: "New password" %>
+        <%= f.input :password_confirmation, label: "Confirm new password",
+        required: false,
+        input_html: { autocomplete: "new-password" },
+        placeholder: "Repeat new password" %>
       </div>
-
-
-    <br>
-
-
-      <div class="col-lg-12">
-
-      <%= f.input :current_password,
-                  required: true,
-                  hint: "Lastly, current-password and click update!" %>
+      <div class="form-action-edit text-center">
+        <%= f.button :submit, "Update Profile", class: "form-button margin-to-button" %>
+        <% end %>
       </div>
-
-
-       <%# .submit-button %>
-            <div class="form-action-edit text-center">
-            <%= f.button :submit, "Update Profile" %>
-            <% end %>
-      </div>
-  </div>
-
-  <br>
-
-  <div class="background-test">
+    <div class="cancel-account text-center">
       <p>Not happy with Timestamp?</p>
-      <p><%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+      <span><%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></span>
+      <br>
+      <a href="/privacy_policy.html">Privacy Policy</a>
+    </div>
+    </div>
   </div>
- </div>
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
 
 
 

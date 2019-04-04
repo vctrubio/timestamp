@@ -10,8 +10,8 @@ class Event < ApplicationRecord
     self.end_time ? Date.today < self.end_time : false
   end
 
-  def mine?(user)
-    self.user.id == user.id
+  def mine?(event_user)
+    user_id == event_user.id
   end
 
   include PgSearch

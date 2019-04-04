@@ -1,5 +1,4 @@
 import mapboxgl from 'mapbox-gl';
-
   const initMapbox = () => {
     const mapElement = document.getElementById('map');
 
@@ -11,7 +10,6 @@ import mapboxgl from 'mapbox-gl';
         center: [-99.12766, 19.42847],
         zoom: 4
       });
-      const render = mapElement.dataset.render;
       const markers = JSON.parse(mapElement.dataset.markers);
       markers.forEach((marker) => {
         if (marker) {
@@ -37,21 +35,17 @@ import mapboxgl from 'mapbox-gl';
         const fitMapToMarkers = (map, markers) => {
           const bounds = new mapboxgl.LngLatBounds();
           markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-          map.fitBounds(bounds, { padding: 70, maxZoom: 13 });
+          map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
         };
         fitMapToMarkers(map, markers);
       }
       map.addControl(new mapboxgl.GeolocateControl({
         positionOptions: {
-        enableHighAccuracy: true
+          enableHighAccuracy: true
         },
-        trackUserLocation: true
+          trackUserLocation: true
       }));
     }
   }
 
 export { initMapbox };
-
-
-
-

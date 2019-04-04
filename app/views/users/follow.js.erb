@@ -1,11 +1,24 @@
-console.log(555);
-let btn = document.getElementById('followbttn')
-btn.classList.add('btn-light')
-btn.classList.remove('btn-dark');
+var container = document.querySelector("[data-following='<%= @user.username %>']");
+container.innerHTML = "<%= j render 'shared/unfollow', follower: @user %>";
 
 
-let btninnerHtml = document.querySelector('#followbttn a')
-    btninnerHtml.innerHTML=("Unfollow");
 
 
-    
+
+
+
+//    let btninnerHtml = document.querySelector('#followbttn a')
+//       btninnerHtml.innerHTML=("Unfollow");
+
+
+
+
+
+
+// var btn = document.querySelector("[data-following='<%= @user.username %>']")
+// btn.addEventListener('click', (e) => {
+//     btn.innerHTML("Following√");
+//     });
+
+
+
