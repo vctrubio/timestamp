@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       {
         lat: event.latitude,
         lng: event.longitude,
-        event_id: event.id
+        image_url: helpers.asset_url('logomark.png')
       }
     end
   end

@@ -3,52 +3,37 @@ import mapboxgl from 'mapbox-gl';
 const initMapbox2 = () => {
   const mapElement2 = document.getElementById('map2');
 
+  const fitMapToMarkers = (map, markers) => {
+    const bounds = new mapboxgl.LngLatBounds();
+    markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
+    map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
+  };
+
   if (mapElement2) { // only build a map if there's a div#map to inject into
     mapboxgl.accessToken = mapElement2.dataset.mapboxApiKey;
-    const map = new mapboxgl.Map({
-      container: 'map2',
-        style: 'mapbox://styles/komcath/cjti3v6am07fr1fo12f1oer72',
-        center: [-99.12766, 19.42847],
-        zoom: 4
-    });
-    map.addControl(new mapboxgl.GeolocateControl({
-      positionOptions: {
-        enableHighAccuracy: true
-      },
-        trackUserLocation: true
-    }));
 
-    const markers = JSON.parse(mapElement.dataset.markers);
+  const map = new mapboxgl.Map({
+    container: 'map2',
+    style: 'mapbox://styles/komcath/cjti3v6am07fr1fo12f1oer72',
+    center: [-99.12766, 19.42847],
+    zoom: 4
+  });
+
+  const markers = JSON.parse(mapElement2.dataset.markers);
     markers.forEach((marker) => {
-      new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
-        .addTo(map);
-    });
-
-    //map.flyTo({center: [markers.lng, markers.lat], zoom: 15});
-  }
+      const element = document.createElement('div');
+      element.className = 'marker';
+      element.style.backgroundImage = `url('${marker.image_url}')`;
+      element.style.backgroundSize = 'contain';
+      element.style.width = '25px';
+      element.style.height = '25px';
+      new mapboxgl.Marker(element)
+      .setLngLat([ marker.lng, marker.lat ])
+      .addTo(map);
+  });
+  fitMapToMarkers(map, markers);
+  };
 }
 
 
-
-
-
-
-    const userMarkers = JSON.parse(mapElement.dataset.markers);
-    document.addEventListener('click', (event) => {
-      if (event.target.className == "user-show-event-title") {
-        userMarkers.lat = parseFloat(event.target.dataset.latitude)
-        userMarkers.lon = parseFloat(event.target.dataset.longitude)
-        if (userMarkers) {
-          new mapboxgl.Marker()
-          .setLngLat([ userMarkers.lon, userMarkers.lat ])
-          .addTo(map);
-        };
-        map.flyTo({center: [userMarkers.lon, userMarkers.lat], zoom: 15});
-
-      } else {console.log(event.target.parentElement)}
-});
-};
-
 export { initMapbox2 };
-
