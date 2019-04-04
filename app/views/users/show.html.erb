@@ -48,9 +48,11 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
             <div class="event-list">
               <h2 data-latitude="<%= event.latitude %>" data-longitude="<%= event.longitude.to_s %>" class="user-show-event-title see-last-event">
                 <%= event.title.capitalize %>
-                <small><%= link_to "active", terminate_event_path(event.id), method: "patch", class: "text-success" %></small>
+                <% if policy(event).terminate? %>
+                <% end %>
               </h2>
               <div class="event-info">
+                <small><%= link_to "End now", terminate_event_path(event.id), method: "patch", class: "text-success" %></small>
                 <% seconds = ( event.end_time - Time.now) %>
                 <span data-end_time="<%= event.end_time %>" class="ended-time-js">
                   <%= Time.at(seconds).utc.strftime("%H:%M:%S") %>
@@ -60,7 +62,6 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
                   <i class="fas fa-trash-alt"></i>
                 <% end %>
                 <% end %>
-
               </div>
             </div>
           </div>
@@ -71,12 +72,14 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
             <div class="event-list ">
               <h2 data-latitude="<%= event.latitude %>" data-longitude="<%= event.longitude %>" class="user-show-event-title" class="see-last-event">
                 <%= event.title.capitalize %>
-                <small class="text-secondary">Ended</small>
               </h2>
               <div class="event-info">
+                <small class="text-secondary">Ended</small>
                    <span class="ended-time" data-ended_time="<%= event.end_time %>"><%= event.end_time %></span>
+                <% if policy(event).destroy? %>
                 <%= link_to user_event_path(event.user_id, event.id), method: :delete do %>
                   <i class="fas fa-trash-alt"></i>
+                <% end %>
                 <% end %>
             </div>
             </div>
