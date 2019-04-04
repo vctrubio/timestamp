@@ -3,7 +3,10 @@
   background: white;
   display: flex;
   background: $purple;
-
+  position: fixed;
+  top: 0;
+width: 100vw;
+z-index: 99999;
     .dropdown-menu.show {
     left: 0;
     left: auto;
