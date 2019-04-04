@@ -14,7 +14,7 @@
           <%= cl_image_tag f.profile_photo , class: "avatar" %>
           <%= link_to "#{f.username}", user_path(f)%>
         </div>
-        <div data-following="<%=f.username%>">
+        <div class="position-fixed-button" data-following="<%=f.username%>">
           <% if current_user.following?(f) %>
           <%= render "shared/unfollow", follower: f %>
           <% else %>

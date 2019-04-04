@@ -12,7 +12,7 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 
 <% if current_user.id != @user.id %>
 <% if current_user.following?(@user) %>
-<div data-following="<%=@user.username%>">
+<div class="position-fixed-bottom" data-following="<%=@user.username%>">
   <%= render "shared/unfollow", follower: @user %>
   <% else %>
 <%= render "shared/follow", following: @user %>
