@@ -14,8 +14,15 @@ class UsersController < ApplicationController
   end
 
   def show
-    @events = @user.events.order(start_time: :desc)
     authorize @user
+    @events = @user.events.order(start_time: :desc)
+    @markers = @events.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude,
+        image_url: helpers.asset_url('logomark.png')
+      }
+    end
   end
 
   def following

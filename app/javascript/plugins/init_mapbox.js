@@ -10,7 +10,6 @@ import mapboxgl from 'mapbox-gl';
         center: [-99.12766, 19.42847],
         zoom: 4
       });
-      const render = mapElement.dataset.render;
       const markers = JSON.parse(mapElement.dataset.markers);
       markers.forEach((marker) => {
         if (marker) {
@@ -42,9 +41,9 @@ import mapboxgl from 'mapbox-gl';
       }
       map.addControl(new mapboxgl.GeolocateControl({
         positionOptions: {
-        enableHighAccuracy: true
+          enableHighAccuracy: true
         },
-        trackUserLocation: true
+          trackUserLocation: true
       }));
     }
   }
