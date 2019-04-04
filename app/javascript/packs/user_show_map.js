@@ -1,4 +1,5 @@
 import mapboxgl from 'mapbox-gl';
+
 const initMapbox2 = () => {
   const mapElement2 = document.getElementById('map2');
 
@@ -7,17 +8,33 @@ const initMapbox2 = () => {
     const map = new mapboxgl.Map({
       container: 'map2',
         style: 'mapbox://styles/komcath/cjti3v6am07fr1fo12f1oer72',
+        center: [-99.12766, 19.42847],
         zoom: 4
     });
-
     map.addControl(new mapboxgl.GeolocateControl({
       positionOptions: {
         enableHighAccuracy: true
       },
-      trackUserLocation: true
+        trackUserLocation: true
     }));
 
-    const userMarkers = {lat: 0, lon: 0}
+    const markers = JSON.parse(mapElement.dataset.markers);
+    markers.forEach((marker) => {
+      new mapboxgl.Marker()
+        .setLngLat([ marker.lng, marker.lat ])
+        .addTo(map);
+    });
+
+    //map.flyTo({center: [markers.lng, markers.lat], zoom: 15});
+  }
+}
+
+
+
+
+
+
+    const userMarkers = JSON.parse(mapElement.dataset.markers);
     document.addEventListener('click', (event) => {
       if (event.target.className == "user-show-event-title") {
         userMarkers.lat = parseFloat(event.target.dataset.latitude)
@@ -31,7 +48,6 @@ const initMapbox2 = () => {
 
       } else {console.log(event.target.parentElement)}
 });
-  }
 };
 
 export { initMapbox2 };
