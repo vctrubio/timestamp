@@ -1,7 +1,5 @@
-
-
-var btn = document.querySelector("[data-following='<%= @user.username %>']")
-btn.innerHTML=('Following√');
+var container = document.querySelector("[data-following='<%= @user.username %>']");
+container.innerHTML = "<%= j render 'shared/unfollow', follower: @user %>";
 
 
 
@@ -13,7 +11,7 @@ btn.innerHTML=('Following√');
 //       btninnerHtml.innerHTML=("Unfollow");
 
 
-    
+
 
 
 
@@ -23,4 +21,4 @@ btn.innerHTML=('Following√');
 //     });
 
 
-    
+
