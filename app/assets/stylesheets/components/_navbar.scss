@@ -58,3 +58,32 @@
   top: 18px;
   left: 80px;
 }
+
+.users {
+  width: 92%;
+  li {
+    display: flex;
+    align-items: center;
+    // border-bottom: 1px solid grey !important;
+  }
+
+  a:last-child {
+      li{
+        border-bottom: none !important;
+      }
+    }
+  img {
+    margin-right: 10px;
+    height: 30px;
+  }
+  p {
+    flex-grow: 1;
+    margin: 0;
+  }
+  a {
+    text-decoration: none;
+  }
+}
+  .list-group-item:last-child {
+    margin-bottom: -1px !important;
+  }
