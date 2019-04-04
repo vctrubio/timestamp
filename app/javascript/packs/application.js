@@ -4,13 +4,13 @@ import { autocomplete } from '../plugins/userAutocomplete';
 import { initMapbox } from '../plugins/init_mapbox';
 import { initMapbox2 } from './user_show_map';
 import { popUp } from './event_popup';
-// import {countDownTimer} from './count_down_time';
+import {countDownTimer} from './count_down_time';
 
 initMapbox();
 initMapbox2();
 autocomplete();
 setTimeout(() => popUp(), 1000);
-
+countDownTimer();
 
 // geolocation JS
 const lat = document.getElementById('lat')
