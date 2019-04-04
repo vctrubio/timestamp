@@ -27,7 +27,7 @@ import mapboxgl from 'mapbox-gl';
           .setPopup(new mapboxgl.Popup({ offset: 25 })
           .setHTML(
 
-        '<div data-id="${marker.event_id}"></div>'
+        `<div data-id="${marker.event_id}"></div>`
         ))
         .addTo(map);
         }
