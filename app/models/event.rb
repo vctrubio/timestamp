@@ -7,7 +7,7 @@ class Event < ApplicationRecord
   mount_uploader :picture, PhotoUploader
 
   def active?
-    self.end_time ? Date.today < self.end_time : false
+    self.end_time ? Time.now < self.end_time : false
   end
 
   def mine?(event_user)
