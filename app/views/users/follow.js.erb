@@ -1,8 +1,8 @@
+var followCounter = document.getElementById('followers-count');
+followCounter.innerText = "<%= @user.followers.count %>"
+
 var container = document.querySelector("[data-following='<%= @user.username %>']");
 container.innerHTML = "<%= j render 'shared/unfollow', follower: @user %>";
-
-
-
 
 
 

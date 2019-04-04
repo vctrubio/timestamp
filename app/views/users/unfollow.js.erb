@@ -2,7 +2,8 @@ var container = document.querySelector("[data-following='<%= @user.username %>']
 container.innerHTML = "<%= j render 'shared/follow', following: @user %>";
 
 
-
+var followCounter = document.getElementById('followers-count');
+followCounter.innerText = "<%= @user.followers.count %>"
 // btn.addEventListener('click', (e) => {
 //     if (btn.style.backgroundColor === "black") {
 //         btn.style.backgroundColor = "yellow";
