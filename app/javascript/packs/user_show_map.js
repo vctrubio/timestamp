@@ -42,7 +42,8 @@ const initMapbox2 = () => {
   const latitude = event.target.dataset.latitude
   const longitude = event.target.dataset.longitude
     map.flyTo({
-    center: [longitude,latitude]
+    center: [longitude,latitude],
+    zoom: 15
     });
   });
    });
