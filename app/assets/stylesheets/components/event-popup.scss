@@ -16,6 +16,7 @@ word-break: break-all;
 .event-info {
    position: relative;
    padding: 5px;
+   flex-grow: 1;
 }
 
 .event-info h1 {
@@ -76,6 +77,7 @@ word-break: break-all;
 
 .fa-comment {
   color: $purple;
+  font-size: 14px;
 }
 
 .mapboxgl-popup-close-button {
