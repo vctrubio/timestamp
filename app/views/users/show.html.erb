@@ -10,14 +10,12 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 <% end %>
 <% if current_user.id != @user.id %>
 <% if current_user.following?(@user) %>
-<div data-following="<%=@user.username%>">
-  <%= link_to "Unfollow", unfollow_user_path(@user), method: 'delete', class: "follow-button" , remote: true%>
-</div>
-<% else %>
-<div data-following="<%=@user.username%>">
-<%= link_to "Follow", follow_user_path(@user), method: 'post', class: "follow-button", remote: true%>
-</div>
+<div class="position-fixed-bottom" data-following="<%=@user.username%>">
+  <%= render "shared/unfollow", follower: @user %>
+  <% else %>
+<%= render "shared/follow", following: @user %>
 <% end %>
+</div>
 <% else %>
 <%= link_to "Edit", edit_user_registration_path(current_user), class: "follow-button" %>
 <% end %>

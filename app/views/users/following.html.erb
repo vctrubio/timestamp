@@ -1,33 +1,28 @@
-<div class="container border">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <%= link_to user_path do %>
+      <button class="button-image-back button-image-back-alt"><i class="fas fa-angle-left"></i></button>
+      <% end %>
+      <div class="header-follow">
+        <h3 class="text-center"><%= @user.username.humanize %>'s Following</h3>
+      </div>
+      <% @following.each do |f| %>
 
-    <h3 class="text-center"><%= @user.username.humanize %> Following</h3>
-
-    <% @following.each do |f| %>
-     <div class="row">  
-        <div class="col-2">
-                <%= cl_image_tag f.profile_photo , class: "avatar" %>
+      <div class="follow-entire-box">
+        <div class="photo-follow">
+          <%= cl_image_tag f.profile_photo , class: "avatar" %>
+          <%= link_to "#{f.username}", user_path(f)%>
         </div>
-        <div class="col-4">
-                <%= link_to "#{f.username}", user_path(f)%> 
+        <div  class="position-fixed-button" data-following="<%=f.username%>">
+          <% if current_user.following?(f) %>
+          <%= render "shared/unfollow", follower: f %>
+        <% else %>
+        <%= render "shared/follow", following: f %>
+        <% end %>
         </div>
-
-        <div class="col-2">
-                <i class="fas fa-angle-up follow-color-arrow"></i>  <%= f.following.count %>  
-                <br>
-                <i class="fas fa-angle-down followers-color-arrow"></i> <%= f.followers.count %>  
-        </div>  
-        
-        
-       <div>
-            <% if current_user.following?(f) %>
-                <h1 class="btn btn-light" data-following="<%=f.username%>"><%= link_to :Unfollow, unfollow_user_path(f.id), method: 'delete', remote: true%></h1>
-            <% else %>
-                <h1 class="btn btn-dark" data-following="<%=f.username%>"><%= link_to :Follow, follow_user_path(f.id), method: 'post', remote: true%></h1>
-             <% end %>
-        </div>
-
-     </div>
+      </div>
     <% end %>
+  </div>
 </div>
-
 

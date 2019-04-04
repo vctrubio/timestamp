@@ -1,5 +1,5 @@
-var btn = document.querySelector("[data-following='<%= @user.username %>']")
-btn.innerHTML=('Unfollowed√');
+var container = document.querySelector("[data-following='<%= @user.username %>']");
+container.innerHTML = "<%= j render 'shared/follow', following: @user %>";
 
 
 
