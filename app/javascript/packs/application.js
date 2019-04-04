@@ -10,6 +10,9 @@ initMapbox2();
 autocomplete();
 // ^ does not follow javascript naming convention, pease fix
 eventTimeLogic();
+setInterval(function() {
+  eventTimeLogic();
+}, 10000);
 
 
 // geolocation JS

@@ -2,7 +2,7 @@ var moment = require('moment');
 moment().format();
 
 
-export const eventTimeLogic = () => {
+ const eventTimeLogic = () => {
   const PlacesWhereYouWantToInjectTimeRemainingArray = Array.from(document.getElementsByClassName('ended-time-js'))
    PlacesWhereYouWantToInjectTimeRemainingArray .forEach((element) => {
    const endTimeUnParsed = String(element.dataset.end_time)
@@ -18,9 +18,9 @@ const PlacesWhereYouWantToInjectTimeEndedArray = Array.from(document.getElements
   const TimeSinceEndString = endTimeParsed.from(moment())
    element.innerHTML = ` <i class="fas fa-hourglass-end"></i> ${TimeSinceEndString}`
    });
-
 }
 
 
 
 
+export { eventTimeLogic }
