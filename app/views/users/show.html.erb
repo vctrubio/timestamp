@@ -55,7 +55,7 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
                 <%= event.title.capitalize %>
                 <% if policy(event).terminate? %>
               </h2>
-              <div class="event-info">
+              <div class="user-show-info">
                 <small><%= link_to "End now", terminate_event_path(event.id), method: "patch", class: "text-success" %></small>
                 <% end %>
                 <% seconds = ( event.end_time - Time.now) %>
@@ -78,7 +78,7 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
               <h2 data-latitude="<%= event.latitude %>" data-longitude="<%= event.longitude %>" class="user-show-event-title" class="see-last-event">
                 <%= event.title.capitalize %>
               </h2>
-              <div class="event-info">
+              <div class="user-show-info">
                 <small class="text-secondary">Ended</small>
                    <span class="ended-time" data-ended_time="<%= event.end_time %>"><%= event.end_time %></span>
                 <% if policy(event).destroy? %>
