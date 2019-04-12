@@ -49,7 +49,7 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
       <input type="hidden" value="<%= event.longitude %>">
       <% if event.end_time > Time.now %>
         <div class="row">
-          <div class="col-sm-12 col-md-6 col-lg-2" >
+          <div class="col-sm-12 col-md-12 col-lg-12" >
             <div class="event-list">
               <h2 data-latitude="<%= event.latitude %>" data-longitude="<%= event.longitude.to_s %>" class="user-show-event-title see-last-event">
                 <%= event.title.capitalize %>
@@ -73,7 +73,7 @@ data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
         </div>
       <% else %>
         <div class="row">
-          <div class="col-sm-12 col-md-6 col-lg-2">
+          <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="event-list ">
               <h2 data-latitude="<%= event.latitude %>" data-longitude="<%= event.longitude %>" class="user-show-event-title" class="see-last-event">
                 <%= event.title.capitalize %>

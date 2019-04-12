@@ -34,6 +34,9 @@
   }
 
 // MARKER BUTTON
+.probando {
+  position: relative;
+}
 .button-marker-map {
   background-color: $purple;
   border-radius: 50%;
@@ -42,6 +45,7 @@
   position: absolute;
   left: 40%;
   top: 83%;
+
   z-index: 100;
     &:focus{
     box-shadow: none;
@@ -54,6 +58,7 @@
     font-size: 40px;
   }
 }
+
 
 // USER FOLLOW/EDIT BUTTON
 .follow-button {
