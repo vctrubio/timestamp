@@ -65,6 +65,9 @@ before_action :find_event, only: [:show, :edit, :update, :destroy, :terminate]
   end
 
   def create
+    @lastevent = current_user.events.last
+    @lastevent.end_time = Time.now
+    @lastevent.save
     @event = Event.new(event_params)
     @event.user = current_user
     authorize @event

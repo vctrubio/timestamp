@@ -5,6 +5,8 @@ class Event < ApplicationRecord
   has_many :comments, dependent: :destroy
   validates :title, presence: true
   mount_uploader :picture, PhotoUploader
+  # after_validation :terminate_last, on: :create
+
 
   def active?
     self.end_time ? Time.now < self.end_time : false
@@ -23,4 +25,13 @@ class Event < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+
+  # private
+
+  # def terminate_last
+  #   event = current_user.events.last
+  #   event.end_time = Time.now
+  #   event.save
+
+  # end
 end
