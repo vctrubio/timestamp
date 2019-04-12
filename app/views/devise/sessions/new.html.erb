@@ -11,11 +11,11 @@
                       required: false,
                       autofocus: true,
                       input_html: { autocomplete: "email" },
-                      placeholder: "victor@gmail.com" %>
+                      placeholder: "email" %>
           <%= f.input :password, label: false,
                       required: false,
                       input_html: { autocomplete: "current-password" },
-                      placeholder: "Write your password" %>
+                      placeholder: "password" %>
           <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
         </div>
 
