@@ -1,1 +1,1 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+TimeStamp is a social media platform focus on real life experience, instead of sharing what has already happened, users can post on the map an event with their current location for their followers to see, comment and get together to enjoy the moment. 
